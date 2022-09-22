@@ -26,3 +26,27 @@ System.out.println(r1.getArea());
 
 > 25.0
 
+5. Suppose the variable shape is declared and initialized as a regular polygon as follows:
+
+```java
+RegularPolygon shape = new RegularPolygon(5, 2.0);
+```
+
+Which of the following will change shape to be a regular hexagon (with 6 sides) and side-length 10.0?
+
+> ```java
+> shape.addSides();
+> shape.setSideLength(10.0);
+> ```
+
+6. Which of the following is part of the signature of a method? 
+
+> order of parameters
+> 
+> type of parameters
+> 
+> number of parameters
+
+7. When two methods in a class have the same name they are said to be... 
+
+> overloaded
