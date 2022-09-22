@@ -24,7 +24,7 @@ r1.setLength(5.0);
 System.out.println(r1.getArea());
 ```
 
-> 25.0
+> 15.0
 
 5. Suppose the variable shape is declared and initialized as a regular polygon as follows:
 
@@ -44,8 +44,6 @@ Which of the following will change shape to be a regular hexagon (with 6 sides) 
 > order of parameters
 > 
 > type of parameters
-> 
-> number of parameters
 
 7. When two methods in a class have the same name they are said to be... 
 
