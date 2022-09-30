@@ -1,25 +1,20 @@
 package assignment2;
 
 public class Airplane {
-    private String callSign;
     private double distance;
     private int direction;
     private int altitude;
+    private String callSign;
+
+    public Airplane(String cs, double dist, int dir, int alt) {
+        this.distance = Math.abs(dist);
+        this.direction = dir % 360;
+        this.altitude = Math.abs(alt);
+        this.callSign = cs;
+    }
 
     public Airplane() {
-        this("AAA01", 1.0f, 0, 0);
-    }
-
-    public Airplane(String callSign, double distance, int direction, int altitude) {
-        this.callSign = callSign;
-        this.distance = Math.abs(distance);
-        this.direction = direction % 360;
-        this.altitude = Math.abs(altitude);
-    }
-
-    public void move(double dist, int dir) {
-        this.distance += dist;
-        this.direction = dir;
+        this("AAA01", 1, 0, 0);
     }
 
     public void gainAlt() {
@@ -27,33 +22,55 @@ public class Airplane {
     }
 
     public void loseAlt() {
-        this.altitude -= Math.min(1000, this.altitude);
+        this.altitude -= Math.min(this.altitude, 1000);
     }
 
     public int getAlt() {
         return this.altitude;
     }
 
+    public void move(double dist, int dir) {
+        final double  r1 = this.distance;
+        final double  r2 = dist;
+
+        final double  u1 = Math.toRadians(direction);
+        final double  u2 = Math.toRadians(dir);
+
+        final double r1s = Math.pow(r1, 2);
+        final double r2s = Math.pow(r2, 2);
+        final double r2c = 2 * r1 * r2 * Math.cos(u2 - u1);
+
+           this.distance = Math.sqrt(r1s + r2s + r2c);
+
+        final double  y1 = r1 * Math.sin(u1);
+        final double  y2 = r2 * Math.sin(u2);
+        final double  x1 = r1 * Math.cos(u1);
+        final double  x2 = r2 * Math.cos(u2);
+
+        final double ang = Math.atan2(y1 + y2, x1 + x2);
+
+          this.direction = Math.floorMod((int) Math.round(Math.toDegrees(ang)), 360);
+    }
+
     public String toString() {
-        return String.format("%s - %.1f miles away at bearing %03d°, altitude %d feet", this.callSign, this.distance,
-                this.direction, this.altitude);
+        return String.format("%s - %.2f miles away at bearing %03d\u00b0, altitude %d feet", this.callSign,
+                this.distance, this.direction, this.altitude);
     }
 
     public double distTo(Airplane other) {
 
-        final double x1 = this.distance * Math.cos(Math.toRadians(this.direction));
-        final double y1 = this.distance * Math.sin(Math.toRadians(this.direction));
+        double r1 = this.distance;
+        double r2 = other.distance;
 
-        final double x2 = other.distance * Math.cos(Math.toRadians(other.direction));
-        final double y2 = other.distance * Math.sin(Math.toRadians(other.direction));
+        double u1 = Math.toRadians(this.direction);
+        double u2 = Math.toRadians(other.direction);
 
-        return Math.round(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * 1000) / 1000;
+        double r1s = Math.pow(r1, 2);
+        double r2s = Math.pow(r2, 2);
+        double r2c = 2 * r1 * r2 * Math.cos(u2 - u1);
 
-        // "better"
-        // return Math.sqrt(Math
-        // .pow((other.distance * Math.cos(Math.toRadians(other.direction)))
-        // - (this.distance * Math.cos(Math.toRadians(this.direction))), 2)
-        // + Math.pow((other.distance * Math.sin(Math.toRadians(other.direction)))
-        // - (this.distance * Math.sin(Math.toRadians(this.direction))), 2));
+        double between = Math.sqrt(r1s + r2s - r2c);
+
+        return (double) Math.round(100 * between) / 100;
     }
 }
