@@ -47,7 +47,7 @@ public class Airplane {
         final double x2 = other.distance * Math.cos(Math.toRadians(other.direction));
         final double y2 = other.distance * Math.sin(Math.toRadians(other.direction));
 
-        return Math.round(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * 100) / 100;
+        return Math.round(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * 1000) / 1000;
 
         // "better"
         // return Math.sqrt(Math
