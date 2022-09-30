@@ -43,6 +43,10 @@ public class RegularPolygon extends java.lang.Object {
         return this.length;
     }
 
+    public int getNumSides() {
+        return this.sides;
+    }
+
     public void setNumSides(int sides) {
         this.sides = sides;
     }

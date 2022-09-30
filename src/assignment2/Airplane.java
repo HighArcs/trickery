@@ -40,21 +40,20 @@ public class Airplane {
     }
 
     public double distTo(Airplane other) {
-        int t = Math.abs(this.direction - other.direction);
-        if (t >= 180) {
-            t = 360 - t;
-        }
 
-        // c^2 = a^2 + b^2 - 2ab * cos(t)
+        final double x1 = this.distance * Math.cos(Math.toRadians(this.direction));
+        final double y1 = this.distance * Math.sin(Math.toRadians(this.direction));
 
-        double a = this.distance, b = other.distance;
-        double ct = Math.cos(Math.toRadians(t));
+        final double x2 = other.distance * Math.cos(Math.toRadians(other.direction));
+        final double y2 = other.distance * Math.sin(Math.toRadians(other.direction));
 
-        double a2 = Math.pow(a, 2);
-        double b2 = Math.pow(a, 2);
-        double ab2cos = 2 * a * b * ct;
+        return Math.round(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * 100) / 100;
 
-        // truncate to 2 decimal places
-        return Math.sqrt(a2 + b2 - ab2cos);
+        // "better"
+        // return Math.sqrt(Math
+        // .pow((other.distance * Math.cos(Math.toRadians(other.direction)))
+        // - (this.distance * Math.cos(Math.toRadians(this.direction))), 2)
+        // + Math.pow((other.distance * Math.sin(Math.toRadians(other.direction)))
+        // - (this.distance * Math.sin(Math.toRadians(this.direction))), 2));
     }
 }
