@@ -1,15 +1,17 @@
 import java.util.Scanner;
 
-public class U3_L1_Activity_One {
+public class U3_L1_Activity_Three {
     public static void main(String[] args) {
         final Scanner s = new Scanner(System.in);
 
-        System.out.println("Please enter a double:");
-        final double d = s.nextDouble();
+        System.out.println("Please enter two integers:");
+
+        final int a = s.nextInt();
+        final int b = s.nextInt();
 
         s.close();
 
-        if (d == 12.345) {
+        if (b == (a * 2)) {
             System.out.println("YES");
         }
     }

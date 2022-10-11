@@ -2,10 +2,8 @@ import java.util.Scanner;
 
 class U1_L4_Activity_Two {
     public static void main(String[] args) {
-
-        Scanner s = new Scanner(System.in);
-
-        int i = s.nextInt();
+        final Scanner s = new Scanner(System.in);
+        final int i = s.nextInt();
 
         s.close();
 

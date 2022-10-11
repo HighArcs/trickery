@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 class U1_L2_Activity_Two {
     public static void main(String[] args) {
-
         final Scanner s = new Scanner(System.in);
 
         System.out.println("Please enter four names:");

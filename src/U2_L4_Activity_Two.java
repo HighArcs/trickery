@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class U2_L4_Activity_Two {
     public static void main(String[] args) {
-
         Scanner scan = new Scanner(System.in); // add `Scanner`
         String str1 = scan.nextLine();
         String str2 = new String(str1); // add `new`

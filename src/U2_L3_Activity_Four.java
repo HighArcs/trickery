@@ -5,7 +5,6 @@ public class U2_L3_Activity_Four {
         final Scanner s = new Scanner(System.in);
 
         System.out.println("Enter a sentence:");
-
         final String content = s.nextLine();
 
         s.close();

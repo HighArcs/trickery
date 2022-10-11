@@ -1,11 +1,17 @@
+import java.util.Scanner;
+
 public class tests {
     public static void main(String[] args) {
-        String s1 = "asldfkjasdlkfj";
-        String s2 = "ierugikcfnvkjd";
+        final Scanner scan = new Scanner(System.in);
 
-        s1 = s1.toLowerCase();
-        s2 = s1.toUpperCase();
+        int base = 2;
+        int exponent = scan.nextInt();
+        int answer = (int) Math.pow(base, exponent);
+        if (answer <= 256) {
+            System.out.println("exponent is 8 or less");
+        }
 
-        System.out.println(s1.compareTo(s2));
+        scan.close();
+
     }
 }

@@ -1,0 +1,20 @@
+{
+	"fmt": {
+		"scope": "java",
+		"prefix": "fmt!",
+		"body": [
+			"String.format(\"$1\", value$2)"
+		]
+	},
+	"scn": {
+		"scope": "java",
+		"prefix": "scn!",
+		"body": [
+			"final Scanner s = new Scanner(System.in);",
+			"",
+			"$1",
+			"",
+			"s.close();"
+		]
+	}
+}
