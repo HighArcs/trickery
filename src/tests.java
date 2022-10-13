@@ -2,16 +2,21 @@ import java.util.Scanner;
 
 public class tests {
     public static void main(String[] args) {
-        final Scanner scan = new Scanner(System.in);
+        int a = 1;
+        int b = 2;
 
-        int base = 2;
-        int exponent = scan.nextInt();
-        int answer = (int) Math.pow(base, exponent);
-        if (answer <= 256) {
-            System.out.println("exponent is 8 or less");
+        if (a <= 2 && b < a) {
+            a *= 2;
+        } else {
+            b *= 2;
         }
 
-        scan.close();
+        if (!(a == 3 || b == 4)) {
+            a *= 3;
+        } else {
+            b *= 5;
+        }
 
+        System.out.println(a + " " + b);
     }
 }
