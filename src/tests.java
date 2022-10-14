@@ -1,22 +1,12 @@
-import java.util.Scanner;
-
 public class tests {
     public static void main(String[] args) {
-        int a = 1;
-        int b = 2;
+        int x = 17;
+        int y = 11;
 
-        if (a <= 2 && b < a) {
-            a *= 2;
+        if (y < x || ((7 * x - 6 * y) % x) == 1) {
+            System.out.print("yes");
         } else {
-            b *= 2;
+            System.out.print("no");
         }
-
-        if (!(a == 3 || b == 4)) {
-            a *= 3;
-        } else {
-            b *= 5;
-        }
-
-        System.out.println(a + " " + b);
     }
 }
