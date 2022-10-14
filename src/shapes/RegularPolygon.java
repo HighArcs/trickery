@@ -55,6 +55,10 @@ public class RegularPolygon extends java.lang.Object {
         this.length = length;
     }
 
+    public boolean equals(RegularPolygon obj) {
+        return obj.getSideLength() == this.getSideLength() && obj.getNumSides() == this.getNumSides();
+    }
+
     public String toString() {
         String verb = this.sides + " sided polygon";
 

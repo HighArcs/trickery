@@ -1,16 +1,14 @@
 public class tests {
     public static void main(String[] args) {
-        int x = 5;
-        if (!(x > 5 || x <= 2)) {
-            System.out.println("in range 1");
-        } else {
-            System.out.println("not in range 1");
-        }
+        String str = "thinking";
+        String start = str.substring(0, 2);
+        String end = str.substring(str.length() - 3);
 
-        if (!(x >= 4 && x < 7)) {
-            System.out.println("in range 2");
-        } else {
-            System.out.println("not in range 2");
+        if (start.equals("th") && end.equals("ing")) {
+            System.out.println("Test 1 passed");
+        }
+        if (!str.equals("thing")) {
+            System.out.println("Test 2 passed");
         }
     }
 }
