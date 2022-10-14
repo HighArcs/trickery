@@ -1,12 +1,16 @@
 public class tests {
     public static void main(String[] args) {
-        int x = 17;
-        int y = 11;
-
-        if (y < x || ((7 * x - 6 * y) % x) == 1) {
-            System.out.print("yes");
+        int x = 5;
+        if (!(x > 5 || x <= 2)) {
+            System.out.println("in range 1");
         } else {
-            System.out.print("no");
+            System.out.println("not in range 1");
+        }
+
+        if (!(x >= 4 && x < 7)) {
+            System.out.println("in range 2");
+        } else {
+            System.out.println("not in range 2");
         }
     }
 }
