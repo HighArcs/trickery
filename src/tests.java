@@ -1,14 +1,18 @@
 public class tests {
     public static void main(String[] args) {
-        String str = "thinking";
-        String start = str.substring(0, 2);
-        String end = str.substring(str.length() - 3);
+        int x = 11;
+        int y = 11;
 
-        if (start.equals("th") && end.equals("ing")) {
-            System.out.println("Test 1 passed");
-        }
-        if (!str.equals("thing")) {
-            System.out.println("Test 2 passed");
+        if (x != y) {
+            System.out.print("one");
+        } else if (x > y) {
+            System.out.print("two");
+        } else if (y < x) {
+            System.out.print("three");
+        } else if (y >= x) {
+            System.out.print("four");
+        } else {
+            System.out.print("five");
         }
     }
 }
