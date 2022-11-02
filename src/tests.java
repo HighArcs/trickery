@@ -1,18 +1,16 @@
+import java.util.Scanner;
+
 public class tests {
     public static void main(String[] args) {
-        int x = 11;
-        int y = 11;
+        int a = 66, b = 25, f = 0, d = 2;
+        while (d <= a) {
+            if (a % d == 0 && b % d == 0) {
+                f = 1;
+            }
 
-        if (x != y) {
-            System.out.print("one");
-        } else if (x > y) {
-            System.out.print("two");
-        } else if (y < x) {
-            System.out.print("three");
-        } else if (y >= x) {
-            System.out.print("four");
-        } else {
-            System.out.print("five");
+            d++;
         }
+
+        System.out.println(f);
     }
 }
