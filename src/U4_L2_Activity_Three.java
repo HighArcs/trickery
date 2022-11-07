@@ -1,57 +1,56 @@
-// literally no idea how to fix this
-
 import java.util.Scanner;
 
 public class U4_L2_Activity_Three {
     public static void main(String[] args) {
         final Scanner s = new Scanner(System.in);
 
-        double lat_min = 90;
-        double lat_max = -90;
+        boolean ok = true;
 
-        double lon_min = 180;
-        double lon_max = -180;
+        double lo = 0;
+        double la = 0;
 
-        boolean going = true;
+        double mla = -90;
+        double nla = 90;
+        double mlo = -180; // milo :D
+        double nlo = 180;
 
-        while (going) {
-            System.out.println("Please enter the latitude:");
-            double lat = s.nextDouble();
-
+        while (ok) {
             System.out.println("Please enter the longitude:");
-            double lon = s.nextDouble();
+            lo = s.nextDouble();
 
-            if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
-                System.out.println("Incorrect longitude or latitude");
-                break;
-            }
+            System.out.println("Please enter the latitude:");
+            la = s.nextDouble();
 
-            if (lat > lat_max) {
-                lat_max = lat;
-            }
-            if (lat < lat_min) {
-                lat_min = lat;
-            }
+            if (la < -90 || la > 90 || lo < -180 || lo > 180) { // obo err :(
+                System.out.println("Incorrect Latitude or Longitude");
+            } else {
+                if (la > mla) {
+                    mla = la;
+                }
 
-            if (lon > lon_max) {
-                lon_max = lon;
-            }
-            if (lon < lon_min) {
-                lon_min = lon;
+                if (la < nla) {
+                    nla = la;
+                }
+
+                if (lo > mlo) {
+                    mlo = lo;
+                }
+
+                if (lo < nlo) {
+                    nlo = lo;
+                }
             }
 
             System.out.println("Would you like to enter another location?");
-
-            if (s.nextInt() == 0) {
-                going = false;
-                System.out.println("Farthest North: " + lat_max);
-                System.out.println("Farthest South: " + lat_min);
-                System.out.println("Farthest West: " + lon_max);
-                System.out.println("Farthest East: " + lon_min);
-            }
+            ok = s.nextInt() == 1;
         }
 
         s.close();
+
+        System.out.println("Farthest North: " + mla);
+        System.out.println("Farthest South: " + nla);
+        System.out.println("Farthest East: " + mlo);
+        System.out.println("Farthest West: " + nlo);
 
     }
 }
