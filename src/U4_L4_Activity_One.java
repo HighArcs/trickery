@@ -5,18 +5,18 @@ public class U4_L4_Activity_One {
         final Scanner s = new Scanner(System.in);
 
         System.out.println("Input String:");
-        final String str = s.nextLine();
+        final String str = s.nextLine().toLowerCase();
 
         s.close();
 
         int count = 0;
         for (int i = 0; i < str.length() - 1; i++) {
-            final String first = str.substring(i, i + 1).toLowerCase();
-            final String second = str.substring(i+1, i + 2).toLowerCase();
+            final char first = str.charAt(i);
+            final char second = str.charAt(i + 1);
 
-            if (first.equals("p") && (second.equals("a")
-                    || second.equals("e") || second.equals("i")
-                    || second.equals("o") || second.equals("u"))) {
+            if (first == 'p' && (second == 'a'
+                    || second == 'e' || second == 'i'
+                    || second == 'o' || second == 'u')) {
                 count++;
             }
         }
