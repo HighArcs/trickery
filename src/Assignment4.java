@@ -22,6 +22,10 @@ public class Assignment4 {
     String m2 = "";
     String reached = " ";
     
+    // iterate over the string ONE time.
+    
+    // this can be done due to the fact that both `for` loops take the exact same range
+    // and that neither loop depends on the other or modifies eachother
     for (int i = 0; i < str.length(); i++) {
      final char c = str.charAt(i);
      
