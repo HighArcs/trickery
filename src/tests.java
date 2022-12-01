@@ -1,16 +1,18 @@
 import java.util.Scanner;
 
+import shapes.Circle;
+import shapes.Rectangle;
+
 public class tests {
     public static void main(String[] args) {
-        int x = 7;
-        int y = 5;
-        doStuff(x, y);
-        System.out.println(x + " " + y);
+        int a = 5;
+        int b = doubleVal(a);
+        System.out.print(a + " " + b);
     }
 
-    public static void doStuff(int a, int b) {
-        a++;
-        b++;
-        System.out.println(a + " " + b);
+    public static int doubleVal(int n) {
+        n *= 2;
+        return n;
     }
+
 }
