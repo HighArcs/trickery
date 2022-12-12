@@ -1,36 +1,29 @@
 public class tests {
     public static void main(String[] args) {
-        Purchase x = new Purchase("gencorp");
-        System.out.print(x);
+        FavNums f = new FavNums(0, 0, 0);
+        f.printRandoms();
     }
 }
 
-class Purchase {
-    private int purchaseValue;
-    private String customerName;
-    private boolean paid;
-
-    public Purchase(int p) {
-        this(p, "customer");
+class FavNums {
+    private int num1;
+    private int num2;
+    private int num3;
+  
+    public FavNums(int n1, int n2, int n3) {
+      num1 = n1;
+      num2 = n2;
+      num3 = n3;
     }
-
-    public Purchase(String n) {
-        this(100, n);
+  
+    public void printFavorites() {
+      System.out.println(num1 + num2 + num3);
     }
-
-    public Purchase(int p, String n) {
-        purchaseValue = p;
-        customerName = n;
-        paid = false;
+  
+    public static void printRandoms() {
+      int r1 = (int)(100 * Math.random());
+      int r2 = (int)(100 * Math.random());
+      int r2 = (int)(100 * Math.random());
+      System.out.println(r1 + r2 + r3);
     }
-
-    public String toString() {
-        String s = "$" + purchaseValue + " from " + customerName + " - ";
-
-        if (!paid) {
-            s += "not ";
-        }
-
-        return s + "paid";
-    }
-}
+  }
