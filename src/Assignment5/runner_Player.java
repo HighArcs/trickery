@@ -1,5 +1,5 @@
 // @ignore Java(536871240)
-package Assignment5;
+// package Assignment5;
 
 import java.util.Scanner;
 import java.lang.Math;
