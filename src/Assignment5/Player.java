@@ -18,21 +18,17 @@ public class Player {
     private String name;
 
     public Player(String name, int x, int y, int z, int health, int direction) {
-        Player.numPlayers++;
-        // if (hp < 0) {
-        // hp = 0;
-        // }
-
-        if (direction < 1 || direction > 6) {
-            direction = 1;
-        }
-
         this.name = name;
         this.x = x;
         this.y = y;
         this.z = z;
-        this.hp = health;
-        this.direction = direction;
+
+        this.setHp(health);
+
+        this.direction = 1;
+        this.setDirection(direction);
+
+        Player.numPlayers++;
     }
 
     public Player(String name, int x, int y, int z) {
@@ -40,7 +36,7 @@ public class Player {
     }
 
     public Player() {
-        this("P" + Player.numPlayers, 0, 0, 0);
+        this("P" + (Player.numPlayers + 1), 0, 0, 0);
 
     }
 
@@ -77,12 +73,12 @@ public class Player {
                 + this.z + "\nDirection: " + this.direction;
     }
 
-    public void setHp(int hp) {
-        if (hp < 0) {
-            hp = 0;
-        }
+    public void setHp(int value) {
+        this.hp = value;
 
-        this.hp = hp;
+        if (this.hp < 0) {
+            this.hp = 0;
+        }
     }
 
     public void setDirection(int direction) {
@@ -92,20 +88,34 @@ public class Player {
     }
 
     public void move(int direction, int units) {
-        switch (direction) {
-            case 1:
-                this.x += units;
-            case 2:
-                this.x -= units;
-            case 3:
-                this.x += units;
-            case 4:
-                this.y -= units;
-            case 5:
-                this.z += units;
-            case 6:
-                this.z -= units;
+        // north
+        if (direction == 1) {
+            this.x += units;
+        }
 
+        // south
+        else if (direction == 2) {
+            this.x -= units;
+        }
+
+        // up
+        else if (direction == 3) {
+            this.y += units;
+        }
+
+        // down
+        else if (direction == 4) {
+            this.y -= units;
+        }
+
+        // east
+        else if (direction == 5) {
+            this.z += units;
+        }
+
+        // west
+        else if (direction == 6) {
+            this.z -= units;
         }
     }
 
@@ -120,28 +130,16 @@ public class Player {
     }
 
     public void attack(Player player, int damage) {
-        player.hp -= damage;
-
-        // saturating underflow
-        if (player.hp < 0) {
-            player.hp = 0;
-        }
-
-        this.hp += (damage / 2);
+        player.setHp(player.hp - damage);
+        this.hp += damage / 2;
     }
 
-    public double getDistance(int x2, int y2, int z2) {
-        int dx = x2 - this.x;
-        int dy = y2 - this.y;
-        int dz = z2 - this.z;
-
-        int sum = (dx * dx) + (dy * dy) + (dz * dz);
-
-        return Math.sqrt(sum);
+    public double getDistance(int x, int y, int z) {
+        return Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2) + Math.pow(z - this.z, 2));
     }
 
     public double getDistance(Player player) {
-        return this.getDistance(player.x, player.y, player.z);
+        return Math.sqrt(Math.pow(player.getX() - this.x, 2) + Math.pow(player.getY() - this.y, 2)
+                + Math.pow(player.getZ() - this.z, 2));
     }
-
 }

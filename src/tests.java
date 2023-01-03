@@ -1,29 +1,38 @@
 public class tests {
-    public static void main(String[] args) {
-        FavNums f = new FavNums(0, 0, 0);
-        f.printRandoms();
-    }
-}
-
-class FavNums {
-    private int num1;
-    private int num2;
-    private int num3;
-  
-    public FavNums(int n1, int n2, int n3) {
-      num1 = n1;
-      num2 = n2;
-      num3 = n3;
-    }
-  
-    public void printFavorites() {
-      System.out.println(num1 + num2 + num3);
-    }
-  
-    public static void printRandoms() {
-      int r1 = (int)(100 * Math.random());
-      int r2 = (int)(100 * Math.random());
-      int r2 = (int)(100 * Math.random());
-      System.out.println(r1 + r2 + r3);
-    }
+  public static void main(String[] args) {
+    System.out.println(square(1));
   }
+
+  // this is such a good algorithm
+  private static int square(int n) {
+    // 0^2 -> 0
+    if (n == 0) {
+      return 0;
+    }
+
+    // (-n)^2 -> n^2
+    if (n < 0) {
+      n = -n;
+    }
+
+    // get n/2 as an int; will be used if even
+    // n >> 1 is the same as n / 2 but faster
+    final int x = n >> 1;
+
+    // 2((n/2)^2); n << 2 is the same as 2n
+    final int next = square(x) << 2;
+
+    // check if n is odd if the binary value has a 1 bit
+    // get this by using bitwise AND, if its even then n&1 will be 0
+
+    if ((n & 1) != 0) {
+      // DO NOT substitute x<<2 with n<<1;
+      // they may be similar math wise
+      // but the extra ending bit needs to stay
+      return next + (x << 2) + 1;
+    }
+
+    // at this point, it can't *not* be even, since it ends otherwise
+    return next;
+  }
+}
