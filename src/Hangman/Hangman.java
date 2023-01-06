@@ -45,7 +45,8 @@ public class Hangman {
         return contains;
     }
 
-    // guess a letter without caring about casing. this will only work if we use Hangman.with_ignore_case
+    // guess a letter without caring about casing. this will only work if we use
+    // Hangman.with_ignore_case
     public boolean guess_letter_ignore_case(String letter) {
         return this.guess_letter(letter.toLowerCase());
     }
@@ -85,7 +86,8 @@ public class Hangman {
             out += "\u001b[31m" + c + "\u001b[0m ";
         }
 
-        // trim extra spaces at the end, since we always add ' ' at the end of each letter
+        // trim extra spaces at the end, since we always add ' ' at the end of each
+        // letter
         while (out.endsWith(" ")) {
             out = out.substring(0, out.length() - 1);
         }
@@ -110,7 +112,8 @@ public class Hangman {
                 return false;
             }
 
-            // no else here, wait until the entire string is done to ensure that we have it all
+            // no else here, wait until the entire string is done to ensure that we have it
+            // all
         }
 
         return true;
@@ -120,7 +123,8 @@ public class Hangman {
         return this.word;
     }
 
-    // not the same as correct_guesses.length(), this counts duplicate letters ('cc' would be counted as 2, not 1)
+    // not the same as correct_guesses.length(), this counts duplicate letters ('cc'
+    // would be counted as 2, not 1)
     public int get_found_count() {
         int count = 0;
         for (int i = 0; i < this.word.length(); i++) {
