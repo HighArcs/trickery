@@ -1,6 +1,16 @@
+import java.util.Scanner;
+
 public class tests {
   public static void main(String[] args) {
-    System.out.println(square(1));
+    String[] words = { "BEAUTIFY", "BENEVOLENCE", "BENIGN", "BEQUEST", "BERATED", "BEREFT", "BEWILDER" };
+    int s = words.length - 1;
+    for (int i = 0; i < words.length; i++) {
+      if (words[s].length() > words[i].length()) {
+        s = i;
+      }
+    }
+
+    System.out.println(words[s]);
   }
 
   // this is such a good algorithm
