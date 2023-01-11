@@ -141,13 +141,36 @@ public class Pokemon {
                 break;
             }
 
-            pokemon2.health -= pokemon1.strength;
-            System.out.println(pokemon1.name + " does " + pokemon1.strength + " damage to " + pokemon2.name + " and "
-                    + pokemon2.name + " has " + pokemon2.health + " health left.");
-            pokemon1.health -= pokemon2.strength;
+            if (pokemon1.speed > pokemon2.speed) {
+                pokemon2.health -= pokemon1.strength;
+                System.out
+                        .println(pokemon1.name + " does " + pokemon1.strength + " damage to " + pokemon2.name + " and "
+                                + pokemon2.name + " has " + pokemon2.health + " health left.");
 
-            System.out.println(pokemon2.name + " does " + pokemon2.strength + " damage to " + pokemon1.name + " and "
-                    + pokemon1.name + " has " + pokemon1.health + " health left.");
+                if (pokemon1.health <= 0 || pokemon2.health <= 0) {
+                    break;
+                }
+                pokemon1.health -= pokemon2.strength;
+
+                System.out
+                        .println(pokemon2.name + " does " + pokemon2.strength + " damage to " + pokemon1.name + " and "
+                                + pokemon1.name + " has " + pokemon1.health + " health left.");
+            } else {
+                pokemon1.health -= pokemon2.strength;
+
+                System.out
+                        .println(pokemon2.name + " does " + pokemon2.strength + " damage to " + pokemon1.name + " and "
+                                + pokemon1.name + " has " + pokemon1.health + " health left.");
+                pokemon2.health -= pokemon1.strength;
+                System.out
+                        .println(pokemon1.name + " does " + pokemon1.strength + " damage to " + pokemon2.name + " and "
+                                + pokemon2.name + " has " + pokemon2.health + " health left.");
+
+                if (pokemon1.health <= 0 || pokemon2.health <= 0) {
+                    break;
+
+                }
+            }
         }
 
         if (pokemon1.health <= 0) {
