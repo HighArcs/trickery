@@ -1,5 +1,4 @@
 #![allow(dead_code)]
-#![feature(unboxed_closures)]
 
 pub mod shapes;
 pub mod tools;
@@ -7,5 +6,7 @@ pub mod u1;
 pub mod u2;
 pub mod u3;
 pub mod u4;
+pub mod u5;
+pub mod u6;
 
 fn main() {}

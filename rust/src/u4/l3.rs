@@ -34,3 +34,20 @@ pub fn activity_three() {
         }
     }
 }
+
+pub fn activity_four() {
+    let s = Scanner::new();
+
+    println!("Enter a positive integer:");
+    let n = s.next_i32();
+
+    if n <= 0 {
+        println!("error");
+    } else {
+        for i in (0..n).rev().step_by(3) {
+            if i % 3 == 0 {
+                print!("{i} ")
+            }
+        }
+    }
+}
