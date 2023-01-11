@@ -17,7 +17,7 @@
 	// }
 	"println!": {
 		"scope": "rust",
-		"prefix": "sout",
+		"prefix": "sou",
 		"body": "println!($1);",
 		"description": "log output to stdout"
 	}
