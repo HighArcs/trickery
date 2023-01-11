@@ -16,7 +16,7 @@ public class U3_L7_Activity_Two {
             System.out.println("Different case");
             // short circuit with length
         } else if (a.length() == b.length()
-                && a.substring(0, a.length() - 1).equals(b.subSequence(0, b.length() - 1))) {
+                && a.substring(0, a.length() - 1).equals(b.substring(0, b.length() - 1))) {
             System.out.println("Close enough");
         } else {
             System.out.println("Try again!");

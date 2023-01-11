@@ -32,4 +32,36 @@ pub fn activity_two() {
     )
 }
 
-pub fn activity_three() {}
+pub fn activity_three() {
+    let s = Scanner::new();
+
+    println!("Please enter two integers:");
+    let a = s.next_i32();
+    let b = s.next_i32();
+
+    println!("{} + {} = ?", a, b);
+    let given = s.next_i32();
+
+    if given == (a + b) {
+        println!("Correct!");
+    } else {
+        println!("Wrong");
+    }
+}
+
+pub fn activity_four() {
+    let s = Scanner::new();
+
+    println!("What is the temperature?");
+    let temperature = s.next_i32();
+
+    if temperature >= 97 {
+        if temperature <= 99 {
+            println!("Temperature is OK");
+        } else {
+            println!("NOT NORMAL");
+        }
+    } else {
+        println!("NOT NORMAL")
+    }
+}
