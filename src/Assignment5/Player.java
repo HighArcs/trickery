@@ -32,7 +32,7 @@ public class Player {
     }
 
     public Player(String name, int x, int y, int z) {
-        this(name, x, y, y, 20, 1);
+        this(name, x, y, z, 20, 1);
     }
 
     public Player() {
