@@ -9,4 +9,7 @@ pub mod u4;
 pub mod u5;
 pub mod u6;
 
+pub mod assignment1;
+pub mod assignment2;
+
 fn main() {}

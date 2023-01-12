@@ -3,7 +3,7 @@ use crate::tools::Scanner;
 pub fn activity_one() {
     let s = Scanner::new();
 
-    let arr = [0.0; 3];
+    let mut arr = [0.0; 3];
     arr[0] = s.next_double();
     arr[1] = s.next_double();
     arr[2] = s.next_double();
@@ -13,7 +13,7 @@ pub fn activity_one() {
 }
 
 pub fn activity_two() {
-    let h = [0; 10];
+    let mut h = [0; 10];
 
     h[0] = 1;
     h[1] = h[0] + 2;
