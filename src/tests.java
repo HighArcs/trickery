@@ -3,26 +3,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import shapes.Rectangle;
+import shapes.RegularPolygon;
+
 public class tests {
   public static void main(String[] args) {
-
-    int[] arr = { 7, 4, 8, 12, 1 };
-    delete(arr, 2);
-
-    System.out.println(Arrays.toString(arr));
-  }
-
-  public static void insert(int[] nums, int val, int pos) {
-    for (int i = nums.length - 1; i > pos; i--) {
-      nums[i] = nums[i - 1];
+    Rectangle[] rectangles = { new Rectangle(4, 1), new Rectangle(2, 5), new Rectangle(7, 6) };
+    for (Rectangle r : rectangles) {
+      if (r.getPerimeter() > 12) {
+        r.setLength(3);
+      } else {
+        r = new Rectangle(1, 2);
+      }
     }
-
-    nums[pos] = val;
-  }
-
-  public static void delete(int[] nums, int pos) {
-    for (int i = pos; i < nums.length - 1; i++) {
-      nums[i] = nums[i + 1];
+    for (Rectangle r : rectangles) {
+      System.out.print(r.getLength() + " ");
     }
   }
 }
