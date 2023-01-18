@@ -1,8 +1,8 @@
+// @ignore Java(536871240)
+// package Assignment6;
 import java.util.Arrays;
 import java.util.Collections;
 
-// @ignore Java(536871240)
-// package Assignment6;
 public class StudentStatsArray {
 
     // Add private final variable to hold Students array
@@ -24,7 +24,21 @@ public class StudentStatsArray {
 
     // Returns the gpa range of the students
     public double getGpaRange() {
-        return -1;
+        double hi = Double.NEGATIVE_INFINITY;
+        double lo = Double.POSITIVE_INFINITY;
+
+        for (Student k : this.students) {
+            double gpa = k.getGpa();
+            if (gpa > hi) {
+                hi = gpa;
+            }
+
+            if (gpa < lo) {
+                lo = gpa;
+            }
+        }
+
+        return hi - lo;
     }
 
     // Returns the name of the student that has the longest length
@@ -82,7 +96,11 @@ public class StudentStatsArray {
     public int sortStatus() {
         if (this.isSorted()) {
             return 1;
-        } else if ()
+        } else if (this.isSortedDesc()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
     private boolean isSorted() {
@@ -96,24 +114,34 @@ public class StudentStatsArray {
     }
 
     private boolean isSortedDesc() {
-        Student[] ck = new Student[this.students.length];
-        for (int i = 0; i < this.students.length; i++) {
-            ck[this.students.length - i] = this.students[i];
-        }
-        if (this.students.length == 1 || this.students.length == 0)
+        Student[] ck = this.students;
+        if (ck.length == 1 || ck.length == 0)
             return true;
-        for (int i = 1; i < this.students.length; i++) {
-            if (this.students[i].getGpa() < this.students[i - 1].getGpa())
+        for (int i = 1; i < ck.length; i++) {
+            if (ck[i].getGpa() > ck[i - 1].getGpa())
                 return false;
         }
         return true;
     }
 
-    
-
     // Returns the array of students in JSON like format
     public String toString() {
-        return "";
+        String p = "";
+
+        p += "[";
+        for (Student student : this.students) {
+            p += "{\n\tname: ";
+            p += student.getName();
+            p += ",\n\tgpa: ";
+            p += student.getGpa();
+            p += ",\n\tyear: ";
+            p += student.getYear();
+            p += "\n},";
+        }
+
+        p += "]";
+
+        return p;
     }
 
 }
