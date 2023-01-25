@@ -8,16 +8,23 @@ import shapes.RegularPolygon;
 
 public class tests {
   public static void main(String[] args) {
-    Rectangle[] rectangles = { new Rectangle(4, 1), new Rectangle(2, 5), new Rectangle(7, 6) };
-    for (Rectangle r : rectangles) {
-      if (r.getPerimeter() > 12) {
-        r.setLength(3);
-      } else {
-        r = new Rectangle(1, 2);
+    ArrayList<String> words = new ArrayList<String>();
+    words.add("set");
+    words.add("interface");
+    words.add("limit");
+    words.add("testify");
+    words.add(2, "disagree");
+    System.out.println(words);
+  }
+
+  public static int checkString(String[] arr) {
+    int count = 0;
+    for (int k = 0; k < arr.length; k++) {
+      if (arr[k].length() >= 3) {
+        count++;
       }
     }
-    for (Rectangle r : rectangles) {
-      System.out.print(r.getLength() + " ");
-    }
+
+    return count;
   }
 }
