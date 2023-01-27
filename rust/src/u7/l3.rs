@@ -4,7 +4,7 @@ pub fn activity_one(mut vec: &mut Vec<String>) {
 
 pub fn activity_two(vec: Vec<String>) {
     let mut sum = 0;
-    let mut mode = vec.get(0).unwrap();
+    let mut mode = vec.get(0);
     let mut has_mode = false;
     let mut max_count = 0;
 
@@ -12,13 +12,13 @@ pub fn activity_two(vec: Vec<String>) {
         sum += vec.get(i).unwrap();
         let mut count = 1;
         for j in (i + 1)..vec.len() {
-            if vec.get(i).unwrap() == vec.get(j).unwrap() {
+            if vec.get(i) == vec.get(j) {
                 count++;
             }
         }
 
         if count > max_count {
-            mode = vec.get(i).unwrap();
+            mode = vec.get(i);
             has_mode = true;
             max_count = count;
         } else if count == max_count {
