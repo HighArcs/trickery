@@ -9,14 +9,14 @@ import shapes.RegularPolygon;
 
 public class tests {
   public static void mystery(ArrayList<Integer> list1, ArrayList<Integer> list2) {
-    for (int i = 0; i < list1.size(); i++) {
-      if (list1.get(i) > list2.get(i)) {
-        System.out.print(list1.get(i));
-      } else {
-        System.out.print(list2.get(i));
-      }
-      System.out.print(" ");
-    }
+    ArrayList<String> list = new ArrayList<>();
+    list.add("Once");
+    list.add("upon");
+    list.add("a");
+    list.add("time");
+    list.remove(1);
+    list.remove(2);
+    System.out.println(list);
   }
 
   public static void main(String[] args) {
