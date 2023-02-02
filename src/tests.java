@@ -8,25 +8,49 @@ import shapes.Rectangle;
 import shapes.RegularPolygon;
 
 public class tests {
-  public static void repeatsAway(ArrayList<Integer> list) {
-    for (int i = list.size() - 1; i > 0; i--) {
-      if (list.get(i).equals(list.get(i - 1))) {
-        list.remove(i);
+  public static void main(String[] args) {
+
+    Integer a = 3;
+    int b = 3;
+    Integer c = new Integer();
+    Integer d = new Integer(3);
+    int e = new int(3);
+    
+  }
+
+  public static boolean mystery(int[] a) {
+    boolean flag = true;
+    for (int i = 1; i < a.length; i++) {
+      if (a[i] < a[i - 1]) {
+        flag = false;
+        break;
       }
     }
+    return flag;
   }
 
-  public static void main(String[] args) {
-    ArrayList<Integer> a = new ArrayList<Integer>();
-    a.add(2);
-    a.add(2);
-    a.add(7);
-    a.add(5);
-    a.add(7);
-    a.add(7);
-    a.add(7);
-    repeatsAway(a);
-    System.out.println(a);
+}
+
+class Light {
+}
+
+class Whatchamacallit {
+  private double price;
+  private String title;
+
+  public Whatchamacallit() {
+    this(0, "none");
   }
 
+  public Whatchamacallit(double p, String t) {
+    price = 0;
+    if (p > 0) {
+      price = p;
+    }
+    title = t;
+  }
+
+  public String toString() {
+    return title + " costs $" + price;
+  }
 }
