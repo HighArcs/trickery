@@ -7,10 +7,8 @@ pub fn activity_one<const N: usize>(mut arr: [String; N]) {
                 min_idx = j;
             }
         }
-
-        let temp = arr[min_idx];
-        arr[min_idx] = arr[i];
-        arr[i] = temp;
+        
+        (arr[min_idx], arr[i]) = (arr[i].clone(), arr[min_idx].clone());
     }
 
     for i in arr {
@@ -26,10 +24,8 @@ pub fn activity_two(mut vec: Vec<i32>) {
                 min_idx = j;
             }
         }
-
-        let temp = vec[min_idx];
-        vec[min_idx] = vec[i];
-        vec[i] = temp;
+        
+        (vec[min_idx], vec[i]) = (vec[i], vec[min_idx]);
     }
 
     println!("{vec:?}");

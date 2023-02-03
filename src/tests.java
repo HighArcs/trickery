@@ -8,27 +8,80 @@ import shapes.Rectangle;
 import shapes.RegularPolygon;
 
 public class tests {
-  public static void main(String[] args) {
+  final public static int[] list = { 1, 3, 5, 6, 7, 8, 11, 13, 14, 15, 16, 17, 20, 22, 24, 29, 30, 31, 33, 35 };
 
-    Integer a = 3;
-    int b = 3;
-    Integer c = new Integer();
-    Integer d = new Integer(3);
-    int e = new int(3);
-    
-  }
-
-  public static boolean mystery(int[] a) {
-    boolean flag = true;
-    for (int i = 1; i < a.length; i++) {
-      if (a[i] < a[i - 1]) {
-        flag = false;
-        break;
+  public static int mystery(int[] a, int s) {
+    for (int i = 0; i < a.length; i++) {
+      if (a[i] == s) {
+        return i;
       }
     }
-    return flag;
+
+    return -1;
   }
 
+  public static void main(String[] args) {
+    double[] list = { 3.5, 4.8, 2.1, 4.2 };
+    System.out.println(insertSort(list));
+  }
+
+  public static int insertSort(ArrayList<String> list) {
+    int count = 0;
+
+    for (int i = 1; i < list.size(); i++) {
+      String toInsert = list.get(i);
+      int j;
+
+      for (j = i; j > 0; j--) {
+        count++;
+        if (toInsert.compareTo(list.get(j - 1)) >= 0) {
+          break;
+        }
+      }
+
+      list.add(j, list.remove(i));
+    }
+
+    return count;
+  }
+
+  public static int selectSort(double[] arr) {
+    int count = 0;
+    for (int i = 0; i < arr.length - 1; i++) {
+      int place = i;
+      for (int j = i + 1; j < arr.length; j++) {
+        count++;
+        if (arr[j] < arr[place]) {
+          place = j;
+        }
+      }
+      double temp = arr[i];
+      arr[i] = arr[place];
+      arr[place] = temp;
+    }
+    return count;
+  }
+
+  public static int insertSort(double[] arr) {
+    int count = 0;
+    for (int i = 1; i < arr.length; i++) {
+      double val = arr[i];
+      int j;
+
+      for (j = i - 1; j >= 0; j--) {
+        count++;
+        if (arr[j] > val) {
+          arr[j + 1] = arr[j];
+        } else {
+          break;
+        }
+      }
+
+      arr[j + 1] = val;
+    }
+
+    return count;
+  }
 }
 
 class Light {
