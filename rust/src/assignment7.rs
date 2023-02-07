@@ -9,4 +9,6 @@ pub struct GameWheel {
     current_pos: usize;
 }
 
-impl std::fmt::Display for GameWheel {}
+impl std::fmt::Display for GameWheel {
+    
+}
