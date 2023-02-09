@@ -1,3 +1,5 @@
+package Assignment7;
+
 public class Slice {
     private String color;
     private int prizeAmount;

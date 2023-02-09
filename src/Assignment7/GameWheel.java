@@ -1,5 +1,6 @@
-import java.lang.management.MemoryUsage;
+package Assignment7;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class GameWheel {
     private ArrayList<Slice> slices; // List of slices making up the wheel
@@ -77,16 +78,42 @@ public class GameWheel {
      * but without changing the pattern of the colors.
      */
     public void sort() {
-        for (int j = 1; j < this.slices.size(); j++) {
-            Slice current = this.slices.get(j);
-            int i = j - 1;
-            while ((i > -1) && (this.slices.get(i).getPrizeAmount() > current.getPrizeAmount())) {
-                this.slices.set(i + 1, this.slices.get(i));
-                i--;
-            }
+        ArrayList<Slice> black = new ArrayList<>();
+        ArrayList<Slice> blue = new ArrayList<>();
+        ArrayList<Slice> red = new ArrayList<>();
 
-            this.slices.set(i + 1, this.slices.get(i));
+        for (Slice slice : this.slices) {
+            if (slice.getColor().equals("black")) {
+                black.add(slice);
+            } else if (slice.getColor().equals("blue")) {
+                blue.add(slice);
+            } else if (slice.getColor().equals("red")) {
+                red.add(slice);
+            } else {
+                throw new Error("invalid slice");
+            }
         }
+
+        black.sort(Comparator.comparing(Slice::getPrizeAmount));
+        blue.sort(Comparator.comparing(Slice::getPrizeAmount));
+        red.sort(Comparator.comparing(Slice::getPrizeAmount));
+
+        ArrayList<Slice> out = new ArrayList<>();
+
+        for (int index = 0; index < this.slices.size(); index++) {
+            if (index % 5 == 0) {
+                // pick!
+                out.add(black.remove(random_idx(black)));
+            } else if (index % 2 == 0) {
+                out.add(blue.remove(random_idx(blue)));
+            } else {
+                out.add(red.remove(random_idx(red)));
+            }
+        }
+    }
+
+    private int get_prize(Slice s) {
+        return s.getPrizeAmount();
     }
 
     /* COMPLETED METHODS - YOU DO NOT NEED TO CHANGE THESE */
