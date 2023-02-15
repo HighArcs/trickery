@@ -9,6 +9,7 @@ pub mod u4;
 pub mod u5;
 pub mod u6;
 pub mod u7;
+pub mod u8;
 
 pub mod assignment1;
 pub mod assignment2;
