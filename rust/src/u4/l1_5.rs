@@ -7,7 +7,7 @@ pub fn activity_one() {
 
     let mut fac = 1;
     while fac <= 5 {
-        println!("{}", n * fac);
+        writeln!(f, "{}", n * fac);
         fac += 1;
     }
 }
@@ -25,5 +25,5 @@ pub fn activity_two() {
         };
     }
 
-    println!("{sum}")
+    writeln!(f, "{sum}")
 }

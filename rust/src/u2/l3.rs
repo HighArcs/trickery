@@ -1,48 +1,48 @@
 use crate::tools::Scanner;
 
-pub fn activity_one() {
+pub fn activity_one(mut f: impl std::io::Write, ) {
     let s = Scanner::new();
 
-    println!("Enter a string:");
+    writeln!(f, "Enter a string:");
     let content = s.next_line();
 
-    println!("Enter a number:");
+    writeln!(f, "Enter a number:");
     let location = s.next_usize();
 
-    println!("{}{}", &content[0..location], &content[location..])
+    writeln!(f, "{}{}", &content[0..location], &content[location..])
 }
 
-pub fn activity_two() {
+pub fn activity_two(mut f: impl std::io::Write, ) {
     let s = Scanner::new();
 
-    println!("Enter a string:");
+    writeln!(f, "Enter a string:");
     let content = s.next_line();
 
-    println!("How many characters would you like to delete at the end?");
+    writeln!(f, "How many characters would you like to delete at the end?");
     let count = s.next_usize();
 
-    println!("{}", &content[0..count]);
+    writeln!(f, "{}", &content[0..count]);
 }
 
-pub fn activity_three() {
+pub fn activity_three(mut f: impl std::io::Write, ) {
     let s = Scanner::new();
 
-    println!("Enter first word:");
+    writeln!(f, "Enter first word:");
     let a = s.next_line().to_lowercase();
 
-    println!("Enter second word:");
+    writeln!(f, "Enter second word:");
     let b = s.next_line().to_lowercase();
 
-    println!("Result: {:?}", a.cmp(&b))
+    writeln!(f, "Result: {:?}", a.cmp(&b))
 }
 
 pub fn activity_four() {
     let s = Scanner::new();
 
-    println!("Enter a sentence:");
+    writeln!(f, "Enter a sentence:");
     let content = s.next_line();
 
     let word = content.split_ascii_whitespace().next().unwrap();
 
-    println!("{}", word.len())
+    writeln!(f, "{}", word.len())
 }

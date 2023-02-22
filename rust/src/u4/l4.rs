@@ -3,7 +3,7 @@ use crate::tools::Scanner;
 pub fn activity_one() {
     let s = Scanner::new();
 
-    println!("Input String:");
+    writeln!(f, "Input String:");
     let st = s.next_line().to_lowercase();
 
     let mut count = 0;
@@ -18,13 +18,13 @@ pub fn activity_one() {
         }
     }
 
-    println!("Contains p followed by a vowel {count} times.")
+    writeln!(f, "Contains p followed by a vowel {count} times.")
 }
 
 pub fn activity_two() {
     let s = Scanner::new();
 
-    println!("Input String:");
+    writeln!(f, "Input String:");
 
     let st = s.next_line().to_lowercase();
 
@@ -32,26 +32,26 @@ pub fn activity_two() {
         let c = &st[i..i + 1];
 
         if c != "e" && c != "t" && c != "a" && c != "i" && c != "o" {
-            print!("{c}");
+            write!(f, "{c}");
         }
     }
 
-    print!("\n");
+    write!(f, "\n");
 }
 
 pub fn activity_three() {
     let s = Scanner::new();
 
-    println!("Enter two strings:");
+    writeln!(f, "Enter two strings:");
     let a = &*s.next_line();
     let b = &*s.next_line();
 
     if a.len() != b.len() {
-        println!("error");
+        writeln!(f, "error");
     } else {
         for i in (0..=(a.len() - 1)).rev() {
-            print!("{}", &b[i..i+1]);
-            print!("{}", &a[i..i+1]);
+            write!(f, "{}", &b[i..i+1]);
+            write!(f, "{}", &a[i..i+1]);
         }
     }
 }

@@ -22,4 +22,6 @@ pub mod assignment7;
 
 pub mod hangman;
 
+pub mod tests;
+
 fn main() {}

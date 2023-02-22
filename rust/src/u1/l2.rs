@@ -1,36 +1,36 @@
 use crate::tools::Scanner;
 
-pub fn activity_one() {
+pub fn activity_one(mut f: impl std::io::Write) {
     let s = Scanner::new();
 
-    println!("What is your favourite food?");
+    writeln!(f, "What is your favourite food?");
 
     let content = s.next_line();
 
-    println!("I like to eat {} as well!", content);
+    writeln!(f, "I like to eat {} as well!", content);
 }
 
-pub fn activity_two() {
+pub fn activity_two(mut f: impl std::io::Write) {
     let s = Scanner::new();
 
-    println!("Please enter four names:");
+    writeln!(f, "Please enter four names:");
 
     let a = s.next_line();
     let b = s.next_line();
     let c = s.next_line();
     let d = s.next_line();
 
-    println!("{} {} {} {}", d, b, c, a);
+    writeln!(f, "{} {} {} {}", d, b, c, a);
 }
 
-pub fn activity_three() {
+pub fn activity_three(mut f: impl std::io::Write) {
     let s = Scanner::new();
 
-    println!("Hi there. What is your name?");
+    writeln!(f, "Hi there. What is your name?");
     let name = s.next_line();
 
-    println!("What state do you live in?");
+    writeln!(f, "What state do you live in?");
     let location = s.next_line();
 
-    println!("My name is {}. I live in {}.", name, location);
+    writeln!(f, "My name is {}. I live in {}.", name, location);
 }

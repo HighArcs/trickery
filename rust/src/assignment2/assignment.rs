@@ -7,7 +7,7 @@ pub fn assignment_2() {
     let mut airplane2 = Airplane::new("AAA02".to_owned(), 15.8, 128, 30_000);
 
     let s = Scanner::new();
-    println!(
+    writeln!(f, 
         "Enter the details of the third airplane (call-sign, distance, bearing and altitude):"
     );
     let call_sign = s.next_line();
@@ -17,46 +17,46 @@ pub fn assignment_2() {
 
     let mut airplane3 = Airplane::new(call_sign, distance, direction, altitude);
 
-    print!("\n");
+    write!(f, "\n");
 
-    println!("Initial Positions:");
-    println!("\"Airplane 1: {airplane1}\"");
-    println!("\"Airplane 2: {airplane2}\"");
-    println!("\"Airplane 3: {airplane3}\"");
+    writeln!(f, "Initial Positions:");
+    writeln!(f, "\"Airplane 1: {airplane1}\"");
+    writeln!(f, "\"Airplane 2: {airplane2}\"");
+    writeln!(f, "\"Airplane 3: {airplane3}\"");
 
-    print!("\n");
+    write!(f, "\n");
 
-    println!("Initial Distances:");
-    println!(
+    writeln!(f, "Initial Distances:");
+    writeln!(f, 
         "The distance between Airplane 1 and Airplane 2 is {} miles.",
         airplane1.dist_to(&airplane2)
     );
-    println!(
+    writeln!(f, 
         "The distance between Airplane 1 and Airplane 3 is {} miles.",
         airplane1.dist_to(&airplane3)
     );
-    println!(
+    writeln!(f, 
         "The distance between Airplane 2 and Airplane 3 is {} miles.",
         airplane2.dist_to(&airplane3)
     );
 
-    print!("\n");
+    write!(f, "\n");
 
-    println!("Initial Height Differences:");
-    println!(
+    writeln!(f, "Initial Height Differences:");
+    writeln!(f, 
         "The difference in height between Airplane 1 and Airplane 2 is {} feet.",
         (airplane1.get_alt() - airplane2.get_alt()).abs()
     );
-    println!(
+    writeln!(f, 
         "The difference in height between Airplane 1 and Airplane 3 is {} feet.",
         (airplane1.get_alt() - airplane3.get_alt()).abs()
     );
-    println!(
+    writeln!(f, 
         "The difference in height between Airplane 2 and Airplane 3 is {} feet.",
         (airplane2.get_alt() - airplane3.get_alt()).abs()
     );
 
-    print!("\n");
+    write!(f, "\n");
 
     airplane1.gain_alt();
     airplane1.gain_alt();
@@ -78,39 +78,39 @@ pub fn assignment_2() {
     airplane3.mov(5.0, 55);
 
 
-    println!("New Positions:");
-    println!("\"Airplane 1: {airplane1}\"");
-    println!("\"Airplane 2: {airplane2}\"");
-    println!("\"Airplane 3: {airplane3}\"");
+    writeln!(f, "New Positions:");
+    writeln!(f, "\"Airplane 1: {airplane1}\"");
+    writeln!(f, "\"Airplane 2: {airplane2}\"");
+    writeln!(f, "\"Airplane 3: {airplane3}\"");
 
-    print!("\n");
+    write!(f, "\n");
 
-    println!("New Distances:");
-    println!(
+    writeln!(f, "New Distances:");
+    writeln!(f, 
         "The distance between Airplane 1 and Airplane 2 is {} miles.",
         airplane1.dist_to(&airplane2)
     );
-    println!(
+    writeln!(f, 
         "The distance between Airplane 1 and Airplane 3 is {} miles.",
         airplane1.dist_to(&airplane3)
     );
-    println!(
+    writeln!(f, 
         "The distance between Airplane 2 and Airplane 3 is {} miles.",
         airplane2.dist_to(&airplane3)
     );
 
-    print!("\n");
+    write!(f, "\n");
 
-    println!("New Height Differences:");
-    println!(
+    writeln!(f, "New Height Differences:");
+    writeln!(f, 
         "The difference in height between Airplane 1 and Airplane 2 is {} feet.",
         (airplane1.get_alt() - airplane2.get_alt()).abs()
     );
-    println!(
+    writeln!(f, 
         "The difference in height between Airplane 1 and Airplane 3 is {} feet.",
         (airplane1.get_alt() - airplane3.get_alt()).abs()
     );
-    println!(
+    writeln!(f, 
         "The difference in height between Airplane 2 and Airplane 3 is {} feet.",
         (airplane2.get_alt() - airplane3.get_alt()).abs()
     );

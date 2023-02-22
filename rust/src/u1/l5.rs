@@ -1,6 +1,6 @@
 use crate::tools::Scanner;
 
-pub fn activity_one() {
+pub fn activity_one(mut f: impl std::io::Write) {
   let s = Scanner::new();
 
   let i = s.next_i32();
@@ -9,12 +9,12 @@ pub fn activity_one() {
   let b = i / 10 % 10;
   let c = i % 10;
 
-  println!("{}", a);
-  println!("{}", b);
-  println!("{}", c);
+  writeln!(f, "{}", a);
+  writeln!(f, "{}", b);
+  writeln!(f, "{}", c);
 }
 
-pub fn activity_two() {
+pub fn activity_two(mut f: impl std::io::Write) {
   let s = Scanner::new();
 
   let i = s.next_i32();
@@ -24,8 +24,8 @@ pub fn activity_two() {
   let c = i / 10 % 10;
   let d = i % 10;
 
-  println!("{}", d);
-  println!("{}", c);
-  println!("{}", b);
-  println!("{}", a);
+  writeln!(f, "{}", d);
+  writeln!(f, "{}", c);
+  writeln!(f, "{}", b);
+  writeln!(f, "{}", a);
 }

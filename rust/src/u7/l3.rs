@@ -26,7 +26,7 @@ pub fn activity_two(vec: Vec<String>) {
         }
     }
 
-    println!("Sum: {sum}");
-    println!("Average: {}", (sum as f64) / (vec.len() as f64));
-    println!("Mode: {}", if has_mode { mode.to_string() } else { "no single mode".to_string() })
+    writeln!(f, "Sum: {sum}");
+    writeln!(f, "Average: {}", (sum as f64) / (vec.len() as f64));
+    writeln!(f, "Mode: {}", if has_mode { mode.to_string() } else { "no single mode".to_string() })
 }

@@ -5,7 +5,7 @@ use crate::tools::Scanner;
 pub fn assignment4() {
     let s = Scanner::new();
 
-    println!("Type the message to be shortened");
+    writeln!(f, "Type the message to be shortened");
     let st = s.next_line().to_lowercase();
 
     let mut m1 = String::new();
@@ -67,16 +67,16 @@ pub fn assignment4() {
         }
     }
 
-    println!();
-    println!("Algorithm 1");
-    println!("Vowels removed: {vowels}");
-    println!("Repeats removed: {repeat}");
-    println!("Algorithm 1 message: {m1}");
-    println!("Algorithm 1 characters saved: {}", st.len() - m1.len());
+    writeln!(f, );
+    writeln!(f, "Algorithm 1");
+    writeln!(f, "Vowels removed: {vowels}");
+    writeln!(f, "Repeats removed: {repeat}");
+    writeln!(f, "Algorithm 1 message: {m1}");
+    writeln!(f, "Algorithm 1 characters saved: {}", st.len() - m1.len());
 
-    println!();
-    println!("Algorithm 2");
-    println!("Unique characters found: {}", reached.len() - 1);
-    println!("Algorithm 2 message: {m2}");
-    println!("Algorithm 2 characters saved: {}", st.len() - m1.len())
+    writeln!(f, );
+    writeln!(f, "Algorithm 2");
+    writeln!(f, "Unique characters found: {}", reached.len() - 1);
+    writeln!(f, "Algorithm 2 message: {m2}");
+    writeln!(f, "Algorithm 2 characters saved: {}", st.len() - m1.len())
 }

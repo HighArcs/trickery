@@ -3,7 +3,7 @@ pub fn activity_one() {
     let scanner = Scanner::new();
 
     let mut vec = Vec::new();
-    println!("Please enter words, enter STOP to stop the loop.");
+    writeln!(f, "Please enter words, enter STOP to stop the loop.");
     loop {
         let line = scanner.next_line();
         if &*line == "STOP" {
@@ -13,8 +13,8 @@ pub fn activity_one() {
         vec.push(line);
     }
 
-    println!("{}", vec.len());
-    println!("{vec:?}");
+    writeln!(f, "{}", vec.len());
+    writeln!(f, "{vec:?}");
 
     if vec.len() > 2 {
         let temp = vec.get(0).unwrap();
@@ -23,5 +23,5 @@ pub fn activity_one() {
         vec.remove(0);
     }
 
-    println!("{vec:?}");
+    writeln!(f, "{vec:?}");
 }

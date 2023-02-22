@@ -1,10 +1,10 @@
 pub fn activity_one<const T: usize>(words: [String; T]) {
     for s in words {
         for i in (0..s.len() - 1).rev() {
-            print!("{}", &s[i..i + 1]);
+            write!(f, "{}", &s[i..i + 1]);
         }
 
-        println!();
+        writeln!(f, );
     }
 }
 

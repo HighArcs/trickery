@@ -3,23 +3,23 @@ use crate::tools::Scanner;
 pub fn activity_one() {
     let s = Scanner::new();
 
-    println!("Please enter an integer");
+    writeln!(f, "Please enter an integer");
     let n = s.next_i32();
 
     if n % 2 == 0 {
-        println!("Even");
+        writeln!(f, "Even");
     } else {
-        println!("Odd");
+        writeln!(f, "Odd");
     }
 }
 
 pub fn activity_two() {
     let s = Scanner::new();
 
-    println!("Please enter a letter grade:");
+    writeln!(f, "Please enter a letter grade:");
     let letter = s.next_line();
 
-    println!(
+    writeln!(f, 
         "{}",
         match &*letter {
             "A" => "90-100",
@@ -35,33 +35,33 @@ pub fn activity_two() {
 pub fn activity_three() {
     let s = Scanner::new();
 
-    println!("Please enter two integers:");
+    writeln!(f, "Please enter two integers:");
     let a = s.next_i32();
     let b = s.next_i32();
 
-    println!("{} + {} = ?", a, b);
+    writeln!(f, "{} + {} = ?", a, b);
     let given = s.next_i32();
 
     if given == (a + b) {
-        println!("Correct!");
+        writeln!(f, "Correct!");
     } else {
-        println!("Wrong");
+        writeln!(f, "Wrong");
     }
 }
 
 pub fn activity_four() {
     let s = Scanner::new();
 
-    println!("What is the temperature?");
+    writeln!(f, "What is the temperature?");
     let temperature = s.next_i32();
 
     if temperature >= 97 {
         if temperature <= 99 {
-            println!("Temperature is OK");
+            writeln!(f, "Temperature is OK");
         } else {
-            println!("NOT NORMAL");
+            writeln!(f, "NOT NORMAL");
         }
     } else {
-        println!("NOT NORMAL")
+        writeln!(f, "NOT NORMAL")
     }
 }

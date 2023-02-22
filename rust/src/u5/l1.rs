@@ -1,3 +1,3 @@
 pub fn activity_one() {
-    println!("I'm a void method!");
+    writeln!(f, "I'm a void method!");
 }

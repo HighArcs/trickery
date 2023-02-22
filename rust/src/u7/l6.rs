@@ -14,7 +14,7 @@ pub fn activity_one<const N: usize>(mut arr: [String; N]) {
         }
 
         arr[j as usize + 1] = to_insert.clone();
-        println!("{arr:?}");
+        writeln!(f, "{arr:?}");
     }
 }
 

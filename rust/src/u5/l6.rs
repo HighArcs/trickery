@@ -59,9 +59,9 @@ pub fn activity() {
     let mut instruction = String::new();
 
     while instruction != "q" {
-        println!("{p}");
-        println!("Location: {}", p.get_location());
-        println!("Type \"u\" to move upwards, \"d\" to move downwards, \"n\" for new Plane, \"q\" to quit.");
+        writeln!(f, "{p}");
+        writeln!(f, "Location: {}", p.get_location());
+        writeln!(f, "Type \"u\" to move upwards, \"d\" to move downwards, \"n\" for new Plane, \"q\" to quit.");
 
         instruction = scan.next_line();
 
@@ -69,13 +69,13 @@ pub fn activity() {
             "u" => {p.upward();},
             "d" => {p.downward();},
             "n" => {
-                println!("Starting location for a new plane?");
+                writeln!(f, "Starting location for a new plane?");
                 let start = scan.next_i32();
                 p = Plane::new(start);
                 scan.next_line();
             },
             "q" => continue,
-            _ => println!("Instruction not recognized")
+            _ => writeln!(f, "Instruction not recognized")
         }
     }
 }

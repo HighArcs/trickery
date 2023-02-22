@@ -8,8 +8,8 @@ pub fn activity_one() {
     arr[1] = s.next_double();
     arr[2] = s.next_double();
 
-    println!("Contents: {} {} {}", arr[0], arr[1], arr[2]);
-    println!("Sum: {}", arr[0] + arr[1] + arr[2]);
+    writeln!(f, "Contents: {} {} {}", arr[0], arr[1], arr[2]);
+    writeln!(f, "Sum: {}", arr[0] + arr[1] + arr[2]);
 }
 
 pub fn activity_two() {
@@ -30,7 +30,7 @@ pub fn activity_two() {
 
     let i = s.next_usize();
     if let 1..=10 = i {
-        println!("{}", h[i - 1])
+        writeln!(f, "{}", h[i - 1])
     }
 }
 

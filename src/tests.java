@@ -1,49 +1,38 @@
+import java.util.Arrays;
 
 public class tests {
 
   public static void main(String[] args) {
+    int[][] matrix = new int[6][4];
 
-    Subtracter a = new Subtracter(100);
+    for (int i = 0; i < matrix.length - 1; i += 2) {
+      for (int j = 0; j < matrix[i].length; j++) {
+        matrix[i + 1][j] = j;
+        matrix[i][matrix[i].length - j - 1] = i;
+      }
+    }
 
-    Subtracter b = new Subtracter(25);
-
-    Subtracter c = b;
-
-    c.decrease(50);
-
-    System.out.println(a.getValue() + " " + b.getValue() + " " + c.getValue());
+    str(matrix);
   }
 
-}
+  public static <T> void str(T[][] a) {
+    for (T[] ts : a) {
+      for (T t : ts) {
+        System.out.print(t.toString() + " ");
+      }
 
-class Subtracter
-
-{
-
-  private int value;
-
-  public Subtracter(int n)
-
-  {
-
-    value = n;
-
+      System.out.println();
+    }
   }
 
-  public void decrease(int less)
+  public static void str(int[][] a) {
+    for (int[] ts : a) {
+      for (int t : ts) {
+        System.out.print(t + " ");
+      }
 
-  {
-
-    value = value - less;
-
-  }
-
-  public int getValue()
-
-  {
-
-    return value;
-
+      System.out.println();
+    }
   }
 
 }

@@ -1,18 +1,18 @@
 use crate::tools::Scanner;
 
-pub fn activity_one() {
+pub fn activity_one(mut f: impl std::io::Write) {
     let s = Scanner::new();
 
-    println!("What type of item are you buying?");
+    writeln!(f, "What type of item are you buying?");
     let item = s.next_line();
 
-    println!("How many are you buying?");
+    writeln!(f, "How many are you buying?");
     let count = s.next_i32();
 
-    println!("How much does each one weight");
+    writeln!(f, "How much does each one weight");
     let weight = s.next_double();
 
-    println!(
+    writeln!(f, 
         "{} {} at {} pounds each will weigh {} pounds total",
         count,
         item,
@@ -21,8 +21,8 @@ pub fn activity_one() {
     )
 }
 
-pub fn activity_two() {
-    println!(
+pub fn activity_two(mut f: impl std::io::Write) {
+    writeln!(f, 
         "{}{}{}",
         "\"That brain of mine is something more than merely mortal; ",
         "as time will show.\"\nAda Lovelace",
@@ -30,6 +30,6 @@ pub fn activity_two() {
     )
 }
 
-pub fn activity_three() {
-  print!("(\\(\\\n( - -)\n((') (')");
+pub fn activity_three(mut f: impl std::io::Write) {
+  write!(f, "(\\(\\\n( - -)\n((') (')");
 }

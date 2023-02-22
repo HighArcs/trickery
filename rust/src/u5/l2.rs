@@ -4,7 +4,7 @@ pub fn activity_one(mut hour: i32) {
         hour %= 24;
     }
 
-    println!(
+    writeln!(f, 
         "{}",
         match hour {
             0 => "midnight",
@@ -20,13 +20,13 @@ pub fn activity_one(mut hour: i32) {
 
 pub fn activity_two(str: &str) {
     for i in (0..str.len()).rev() {
-        print!("{}", &str[i..i + 1])
+        write!(f, "{}", &str[i..i + 1])
     }
 }
 
 pub fn activity_three(num: f64, n: i32) {
     for _ in 0..n {
-        println!("{num}");
+        writeln!(f, "{num}");
     }
 }
 
@@ -43,9 +43,9 @@ pub fn activity_four(mut pennies: i32) {
     let nickels = pennies / 5;
     pennies -= nickels * 5;
 
-    println!("Dollar Bills: {dollars}");
-    println!("Dollar Quarters: {quarters}");
-    println!("Dollar Dimes: {dimes}");
-    println!("Dollar Nickels: {nickels}");
-    println!("Dollar Pennies: {pennies}");
+    writeln!(f, "Dollar Bills: {dollars}");
+    writeln!(f, "Dollar Quarters: {quarters}");
+    writeln!(f, "Dollar Dimes: {dimes}");
+    writeln!(f, "Dollar Nickels: {nickels}");
+    writeln!(f, "Dollar Pennies: {pennies}");
 }

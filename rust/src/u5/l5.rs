@@ -33,22 +33,22 @@ impl Display for Person {
 pub fn activity_one() {
     let s = Scanner::new();
 
-    println!("Enter the person's first name:");
+    writeln!(f, "Enter the person's first name:");
     let first_name = s.next_line();
 
-    println!("Enter the person's last name:");
+    writeln!(f, "Enter the person's last name:");
     let last_name = s.next_line();
 
-    println!("Enter the person's age:");
+    writeln!(f, "Enter the person's age:");
     let age = s.next_u32();
 
-    println!("Enter the person's social security number:");
+    writeln!(f, "Enter the person's social security number:");
     let ssn = s.next_line();
 
-    println!();
+    writeln!(f, );
 
     let person = Person::new(first_name, last_name, age, ssn);
-    println!("{person}");
+    writeln!(f, "{person}");
 }
 
 pub struct Oven {
@@ -102,37 +102,37 @@ impl Oven {
 pub fn activity_two() {
     let scan = Scanner::new();
 
-    println!("Maximum oven temperature:");
+    writeln!(f, "Maximum oven temperature:");
     let max_temp = scan.next_u32();
 
-    println!("Starting temperature of the oven:");
+    writeln!(f, "Starting temperature of the oven:");
     let start_temp = scan.next_u32();
 
     let mut oven = Oven::new(max_temp, start_temp);
     let mut instruction = "".to_owned();
 
     while instruction != "q" {
-        println!(
+        writeln!(f, 
             "New oven with a maximum temperature of {} and a starting temperature of {} degrees.",
             oven.get_max_temp(),
             oven.get_current_temp()
         );
 
-        println!("To preheat the oven enter \"p\", to turn off the oven enter \"o\", to restart enter \"r\", to quit enter \"q\"");
+        writeln!(f, "To preheat the oven enter \"p\", to turn off the oven enter \"o\", to restart enter \"r\", to quit enter \"q\"");
 
         instruction = scan.next_line();
 
         match &*instruction {
             "p" => {
-                println!("Enter the temperature to preheat the oven to:");
+                writeln!(f, "Enter the temperature to preheat the oven to:");
                 let temp = scan.next_u32();
 
                 oven.preheat(temp);
 
-                println!("Current temperature of the oven is now {} degrees.\n", temp)
+                writeln!(f, "Current temperature of the oven is now {} degrees.\n", temp)
             },
             "o" => {
-                println!("Turning the oven off.\n");
+                writeln!(f, "Turning the oven off.\n");
                 oven.turn_off();
             },
             _ => continue

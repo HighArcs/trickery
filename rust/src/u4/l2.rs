@@ -3,14 +3,14 @@ use crate::tools::Scanner;
 pub fn activity_one() {
     let s = Scanner::new();
 
-    println!("Enter two numbers:");
+    writeln!(f, "Enter two numbers:");
     let a = s.next_i32();
     let b = s.next_i32();
 
     let mut i = a;
     while i <= b {
         if i % 2 == 1 {
-            print!("{i} ");
+            write!(f, "{i} ");
         }
 
         i += 1;
@@ -20,15 +20,15 @@ pub fn activity_one() {
 pub fn activity_two() {
     let s = Scanner::new();
 
-    println!("Enter a positive integer:");
+    writeln!(f, "Enter a positive integer:");
     let mut n = s.next_i32();
 
     if n < 0 {
-        println!("Not a positive integer")
+        writeln!(f, "Not a positive integer")
     } else {
         let mut p = 0;
         while n > 0 {
-            println!(
+            writeln!(f, 
                 "{}",
                 (n % 10)
                     * 10i32.pow({
@@ -60,14 +60,14 @@ pub fn activity_three() {
     let mut nlo = 180.0;
 
     while ok {
-        println!("Please enter the longitude:");
+        writeln!(f, "Please enter the longitude:");
         lo = s.next_double();
 
-        println!("Please enter the latitude:");
+        writeln!(f, "Please enter the latitude:");
         la = s.next_double();
 
         if la < -90.0 || la > 90.0 || lo < -180.0 || lo > 180.0 {
-            println!("Incorrect Latitude or Longitude");
+            writeln!(f, "Incorrect Latitude or Longitude");
         } else {
             if la > mla {
                 mla = la;
@@ -86,14 +86,14 @@ pub fn activity_three() {
             }
         }
 
-        println!("Would you like to enter another location?");
+        writeln!(f, "Would you like to enter another location?");
         ok = s.next_i32() == 1;
     }
 
-    println!("Farthest North: {mla}");
-    println!("Farthest South: {nla}");
-    println!("Farthest East: {mlo}");
-    println!("Farthest West: {nlo}");
+    writeln!(f, "Farthest North: {mla}");
+    writeln!(f, "Farthest South: {nla}");
+    writeln!(f, "Farthest East: {mlo}");
+    writeln!(f, "Farthest West: {nlo}");
 
     {
         la

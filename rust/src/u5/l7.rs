@@ -82,7 +82,7 @@ pub fn activity() {
     let mut instruction = String::new();
 
     while instruction != "q" {
-        println!(
+        writeln!(f, 
             "Type the name of the method to test. Type c to construct a new rectangle, q to quit."
         );
 
@@ -90,56 +90,56 @@ pub fn activity() {
 
         match &*instruction {
             "get_area" => {
-                println!("{}", r.get_area());
+                writeln!(f, "{}", r.get_area());
             }
 
             "get_base" => {
-                println!("{}", r.get_base());
+                writeln!(f, "{}", r.get_base());
             }
 
             "get_height" => {
-                println!("{}", r.get_height());
+                writeln!(f, "{}", r.get_height());
             }
 
             "get_perimeter" => {
-                println!("{}", r.get_perimeter());
+                writeln!(f, "{}", r.get_perimeter());
             }
 
             "to_string" => {
-                println!("{}", r.to_string());
+                writeln!(f, "{}", r.to_string());
             }
 
             "get_diagonal" => {
-                println!("{}", r.get_diagonal())
+                writeln!(f, "{}", r.get_diagonal())
             }
 
             "set_base" => {
-                println!("Enter parameter value:");
+                writeln!(f, "Enter parameter value:");
                 let arg = scan.next_double();
                 r.set_base(arg);
                 scan.next_line();
             }
 
             "set_height" => {
-                println!("Enter parameter value:");
+                writeln!(f, "Enter parameter value:");
                 let arg = scan.next_double();
                 r.set_height(arg);
                 scan.next_line();
             }
 
             "eq" => {
-                println!("Enter base and height:");
+                writeln!(f, "Enter base and height:");
                 let bs = scan.next_double();
                 let ht = scan.next_double();
 
                 let r_other = Rectangle::new(bs, ht);
 
-                println!("{}", r == r_other);
+                writeln!(f, "{}", r == r_other);
                 scan.next_line();
             }
 
             "c" => {
-                println!("Enter base and height:");
+                writeln!(f, "Enter base and height:");
                 let bs = scan.next_double();
                 let ht = scan.next_double();
 
@@ -150,7 +150,7 @@ pub fn activity() {
             "q" => {
                 break;
             }
-            _ => println!("Not recognized."),
+            _ => writeln!(f, "Not recognized."),
         }
     }
 }

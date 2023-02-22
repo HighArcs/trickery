@@ -64,35 +64,35 @@ pub fn activity() {
     let mut i = String::new();
 
     while i != "q" {
-        println!("Input the make of the car, \"default\" to create a default car or \"q\" to quit:");
+        writeln!(f, "Input the make of the car, \"default\" to create a default car or \"q\" to quit:");
         i = scan.next_line();
 
-        println!();
+        writeln!(f, );
         match &*i {
             "q" => {
-                println!("Exiting. Bye!");
+                writeln!(f, "Exiting. Bye!");
             }
 
             "default" => {
                 let car = Car::default();
-                print!("{}", car);
+                write!(f, "{}", car);
             }
 
             _ => {
-                println!("Model of the car:");
+                writeln!(f, "Model of the car:");
                 let model = scan.next_line();
 
-                println!("Year of the car:");
+                writeln!(f, "Year of the car:");
                 let year = scan.next_u16();
 
-                println!("Miles per gallon of the car:");
+                writeln!(f, "Miles per gallon of the car:");
                 let mpg = scan.next_double();
 
-                println!();
-                println!("{}", Car::new(i.to_owned(), model, year, mpg))
+                writeln!(f, );
+                writeln!(f, "{}", Car::new(i.to_owned(), model, year, mpg))
             }
         }
 
-        println!();
+        writeln!(f, );
     }
 }

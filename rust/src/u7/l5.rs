@@ -12,7 +12,7 @@ pub fn activity_one<const N: usize>(mut arr: [String; N]) {
     }
 
     for i in arr {
-        print!("{i} ");
+        write!(f, "{i} ");
     }
 }
 
@@ -28,5 +28,5 @@ pub fn activity_two(mut vec: Vec<i32>) {
         (vec[min_idx], vec[i]) = (vec[i], vec[min_idx]);
     }
 
-    println!("{vec:?}");
+    writeln!(f, "{vec:?}");
 }
