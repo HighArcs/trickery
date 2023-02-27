@@ -36,4 +36,4 @@ for (const unit of fs.readdirSync('quiz')) {
     buf += lessons;
 }
 
-fs.writeFileSync('README.md', buf)
+fs.writeFileSync('README.md', buf) 

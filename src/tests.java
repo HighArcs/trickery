@@ -3,16 +3,9 @@ import java.util.Arrays;
 public class tests {
 
   public static void main(String[] args) {
-    int[][] matrix = new int[6][4];
+    SuperHero superBob = new SuperHero();
 
-    for (int i = 0; i < matrix.length - 1; i += 2) {
-      for (int j = 0; j < matrix[i].length; j++) {
-        matrix[i + 1][j] = j;
-        matrix[i][matrix[i].length - j - 1] = i;
-      }
-    }
-
-    str(matrix);
+    superBob.speak();
   }
 
   public static <T> void str(T[][] a) {
@@ -35,4 +28,24 @@ public class tests {
     }
   }
 
+}
+
+class Human {
+  public Human() {
+    System.out.print("I can run");
+  }
+
+  public void speak() {
+    System.out.print("I can also talk");
+  }
+}
+
+class SuperHero extends Human {
+  public SuperHero() {
+    System.out.print(" and also fly");
+  }
+
+  public void speak() {
+    System.out.print("I can now talk faster");
+  }
 }
