@@ -1,118 +1,83 @@
-use std::{
-    fmt::{Display, Error, Formatter},
-    ops::Deref,
-};
+use std::fmt::{Display, Error, Formatter};
 
+pub trait Animal<'a> {
+    const NAME: &'a str;
 
-
-pub trait Animal {
-    pub fn new(name: String) -> Self {
-        Self { name }
+    fn get_name(&self) -> String {
+        Self::NAME.to_owned()
     }
 
-    pub fn get_name(&self) -> &String {
-        &self.name
-    }
+    fn speak(&self) -> String;
 
-    pub fn speak(&self) -> String {
-        return "".to_owned();
+    fn str(&self) -> String {
+        format!("{} ({} {})", Self::NAME, self.speak(), self.speak())
     }
 }
 
-impl Display for Animal {
-    fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error> {
-        write!("{} ({} {}).", self.get_name(), self.speak(), self.speak())
+pub struct Cow;
+
+impl<'a> Animal<'a> for Cow {
+    const NAME: &'a str = "cow";
+
+    fn speak(&self) -> String {
+        return "moo".to_owned();
     }
 }
 
-macro_rules! extend {
-    ($struct:ident, $parent:ident) {
-        impl Deref for Struct {
-            type Target = $parent;
-            fn deref(&self) -> &Self::Target {
-                &self.parent
-            }
-        }
+pub struct Pig;
+
+impl<'a> Animal<'a> for Pig {
+    const NAME: &'a str = "pig";
+
+    fn speak(&self) -> String {
+        return "oink".to_owned();
     }
 }
 
-pub struct Cow {
-    parent: Animal,
-}
+pub struct Sheep;
 
-impl Cow {
-    pub fn new() -> Self {
-        Self {
-            parent: Animal {
-                name: "cow".to_owned(),
-            },
-        }
-    }
+impl<'a> Animal<'a> for Sheep {
+    const NAME: &'a str = "sheep";
 
-    pub fn speak() -> String {
-        return "moo".to_owned()
+    fn speak(&self) -> String {
+        return "baa".to_owned();
     }
 }
-
-pub struct Pig {
-    parent: Animal,
-}
-
-impl Pig {
-    pub fn new() -> Self {
-        Self {
-            parent: Animal {
-                name: "pig".to_owned(),
-            },
-        }
-    }
-
-    pub fn speak() -> String {
-        return "oink".to_owned()
-    }
-}
-
-pub struct Sheep {
-    parent: Animal,
-}
-
-impl Sheep {
-    pub fn new() -> Self {
-        Self {
-            parent: Animal {
-                name: "sheep".to_owned(),
-            },
-        }
-    }
-
-    pub fn speak() -> String {
-        return "baa".to_owned()
-    }
-}
-
-extend!(Cow, Animal)
-extend!(Pig, Animal)
-extend!(Sheep, Animal)
 
 pub struct Farmer {
     forename: String,
-    surname: String
+    surname: String,
 }
 
 impl Farmer {
-    pub fn new(f: Strnig, s: String) -> Self {
-        Self { forename: f, surname: s }
+    pub fn new(f: String, s: String) -> Self {
+        Self {
+            forename: f,
+            surname: s,
+        }
     }
 }
 
-impl Display for Animal {
+impl Display for Farmer {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error> {
-        write!("{} {}", self.forename, self.surname)
+        write!(f, "{} {}", self.forename, self.surname)
     }
 }
 
-pub struct Farm {
+pub struct Farm<T: for<'a> Animal<'a>, U: for<'a> Animal<'a>, V: for<'a> Animal<'a>> {
     the_farmer: Farmer,
-    first_animal: Animal,
+    first_animal: T,
+    second_animal: U,
+    third_animal: V,
+}
 
+impl<T: for<'a> Animal<'a>, U: for<'a> Animal<'a>, V: for<'a> Animal<'a>> Display
+    for Farm<T, U, V>
+{
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error> {
+        writeln!(f, "{} had a farm.", self.the_farmer).unwrap();
+        writeln!(f, "And on that farm he had a {}", self.first_animal.str()).unwrap();
+        writeln!(f, "And on that farm he had a {}", self.second_animal.str()).unwrap();
+        writeln!(f, "And on that farm he had a {}", self.third_animal.str())
+    }
 }

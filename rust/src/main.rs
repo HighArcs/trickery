@@ -11,6 +11,7 @@ pub mod u6;
 pub mod u7;
 pub mod u8;
 pub mod u9;
+pub mod u10;
 
 pub mod assignment1;
 pub mod assignment2;
