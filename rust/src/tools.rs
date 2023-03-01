@@ -3,11 +3,11 @@ use std::{
     str::FromStr,
 };
 
-pub struct Scanner(Stdin);
+pub struct Scanner<T: Read>(T);
 
-impl Scanner {
-    pub fn new() -> Self {
-        Self(std::io::stdin())
+impl<T: Read> Scanner<T> {
+    pub fn new(t: T) -> Self {
+        Self(t)
     }
 
     pub fn with(i: Stdin) -> Self {

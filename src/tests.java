@@ -2,10 +2,21 @@ import java.util.Arrays;
 
 public class tests {
 
-  public static void main(String[] args) {
-    SuperHero superBob = new SuperHero();
+  private static int incr = 0;
 
-    superBob.speak();
+  public static void main(String[] args) {
+    System.out.println(recur("avocado"));
+  }
+
+  public static String recur(String str) {
+    int len = str.length();
+
+    if (len >= 2) {
+      String next = str.substring(0, len - 2);
+      return recur(next) + str.substring(len - 2);
+    } else {
+      return str;
+    }
   }
 
   public static <T> void str(T[][] a) {
