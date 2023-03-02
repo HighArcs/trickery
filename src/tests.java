@@ -5,18 +5,22 @@ public class tests {
   private static int incr = 0;
 
   public static void main(String[] args) {
-    System.out.println(recur("avocado"));
-  }
+    int[] elements = { 3, 4, 6, 2, 7, 7 };
+    for (int j = 0; j < elements.length - 1; j++) {
+      int minIndex = j;
+      for (int k = j + 1; k < elements.length; k++) {
+        incr++;
+        if (elements[k] < elements[minIndex]) { // comparison performed
+          minIndex = k;
+        }
+      }
 
-  public static String recur(String str) {
-    int len = str.length();
-
-    if (len >= 2) {
-      String next = str.substring(0, len - 2);
-      return recur(next) + str.substring(len - 2);
-    } else {
-      return str;
+      int temp = elements[j];
+      elements[j] = elements[minIndex];
+      elements[minIndex] = temp;
     }
+
+    System.out.println(incr);
   }
 
   public static <T> void str(T[][] a) {
