@@ -1,132 +1,49 @@
-use std::{
-    io::{Read, Stdin, Write},
-    str::FromStr,
-};
+use std::io::{Write, Read};
+pub struct Io<'a> {
+    i: &'a mut [u8],
+    o: &'a mut [u8],
+}
 
-pub struct Scanner<T: Read>(T);
-
-impl<T: Read> Scanner<T> {
-    pub fn new(t: T) -> Self {
-        Self(t)
+impl<'a> Write for Io<'a> {
+    fn write(&mut self, buf: &[u8]) -> std::io::Result<usize> {
+        Write::write(&mut self.o, buf)
     }
 
-    pub fn with(i: Stdin) -> Self {
-        Self(i)
-    }
-
-    pub fn next_line(&self) -> String {
-        let mut str = String::new();
-        let _ = std::io::stdout().flush();
-        self.0.read_line(&mut str).expect("did not enter a string");
-        if let Some('\n') = str.chars().next_back() {
-            str.pop();
-        }
-
-        if let Some('\r') = str.chars().next_back() {
-            str.pop();
-        }
-
-        str
-    }
-
-    pub fn next<T: FromStr>(&self) -> T {
-        let mut str = String::new();
-
-        while str.parse::<T>().is_err() {
-            str = self.next_line();
-        }
-
-        str.parse::<T>().ok().unwrap()
-    }
-
-    pub fn next_int<T: Int + FromStr>(&self) -> T {
-        self.next::<T>()
-    }
-
-    pub fn next_u8(&self) -> u8 {
-        self.next_int()
-    }
-
-    pub fn next_u16(&self) -> u16 {
-        self.next_int()
-    }
-
-    pub fn next_u32(&self) -> u32 {
-        self.next_int()
-    }
-
-    pub fn next_u64(&self) -> u64 {
-        self.next_int()
-    }
-
-    pub fn next_u128(&self) -> u128 {
-        self.next_int()
-    }
-
-    pub fn next_usize(&self) -> usize {
-        self.next_int()
-    }
-
-    pub fn next_i8(&self) -> i8 {
-        self.next_int()
-    }
-
-    pub fn next_i16(&self) -> i16 {
-        self.next_int()
-    }
-
-    pub fn next_i32(&self) -> i32 {
-        self.next_int()
-    }
-
-    pub fn next_i64(&self) -> i64 {
-        self.next_int()
-    }
-
-    pub fn next_i128(&self) -> i128 {
-        self.next_int()
-    }
-
-    pub fn next_isize(&self) -> isize {
-        self.next_int()
-    }
-
-    pub fn next_bool(&self) -> bool {
-        self.next::<bool>()
-    }
-
-    pub fn next_float(&self) -> f32 {
-        self.next::<f32>()
-    }
-
-    pub fn next_double(&self) -> f64 {
-        self.next::<f64>()
-    }
-
-    pub fn next_char(&mut self) -> char {
-        let mut buf: [u8; 1] = [0];
-        self.0.read(&mut buf).expect("any token");
-        *buf.get(0).unwrap_or(&0) as char
+    fn flush(&mut self) -> std::io::Result<()> {
+        Write::flush(&mut self.i).unwrap();
+        Write::flush(&mut self.o)
     }
 }
 
-pub trait Int {}
-pub trait Float {}
+impl<'a> Read for Io<'a> {
+    fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
+        (&self.i[..]).read(buf)
+    }
+}
 
-impl Int for u8 {}
-impl Int for u16 {}
-impl Int for u32 {}
-impl Int for u64 {}
-impl Int for u128 {}
-impl Int for usize {}
+impl<'a> Io<'a> {
+    pub fn new() -> Self {
+        Io {
+            i: &mut [][..],
+            o: &mut [][..],
+        }
+    }
 
-impl Int for i8 {}
-impl Int for i16 {}
-impl Int for i32 {}
-impl Int for i64 {}
-impl Int for i128 {}
-impl Int for isize {}
-
-impl Float for f32 {}
-impl Float for f64 {}
-
+    pub fn send(&mut self, z: impl std::fmt::Display) -> &mut Self {
+        write!(self.i, "{z}").unwrap();
+        self
+    }
+    
+    pub fn sendln(&mut self, z: impl std::fmt::Display) -> &mut Self {
+        self.send(format!("{z}\n"))
+    }
+    
+    pub fn print(&mut self, z: impl std::fmt::Display) -> &mut Self {
+        write!(self.o, "{z}").unwrap();
+        self
+    }
+    
+    pub fn println(&mut self, z: impl std::fmt::Display) -> &mut Self {
+        self.print(format!("{z}\n"))
+    }
+}

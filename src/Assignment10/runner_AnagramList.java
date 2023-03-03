@@ -1,6 +1,3 @@
-package Assignment10;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class runner_AnagramList {
