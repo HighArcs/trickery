@@ -15,7 +15,19 @@ pub fn activity_two(f: I) {
     let c = f.next_line();
     let d = f.next_line();
 
-    f.print(format!("{d} {b} {c} {a}"));
+    f.println(format!("{d} {b} {c} {a}"));
+}
+
+pub fn activity_three(f: I) {
+    f.println("Hi there. What is your name?");
+
+    let name = f.next_line();
+
+    f.println("What state do you live in?");
+
+    let state = f.next_line();
+
+    f.println(format!("My name is {name}. I live in {state}."));
 }
 
 #[cfg(test)]
@@ -82,5 +94,41 @@ mod tests {
 
         f.read_line();
         assert_eq!(f.read_line(), format!("{d} {b} {c} {a}"));
+    }
+
+    #[test]
+    fn a3_sample() {
+        let mut f = Io::new();
+
+        f.sendln("Dave");
+
+        f.sendln("New York");
+
+        activity_three(&mut f);
+
+        assert_eq!(f.read_line(), "Hi there. What is your name?");
+        assert_eq!(f.read_line(), "What state do you live in?");
+        assert_eq!(f.read_line(), "My name is Dave. I live in New York.");
+    }
+
+    #[test]
+    fn a3_variable() {
+        let mut f = Io::new();
+
+        let name = "John";
+        let state = "Maine";
+
+        f.sendln(name);
+
+        f.sendln(state);
+
+        activity_three(&mut f);
+
+        assert_eq!(f.read_line(), "Hi there. What is your name?");
+        assert_eq!(f.read_line(), "What state do you live in?");
+        assert_eq!(
+            f.read_line(),
+            format!("My name is {name}. I live in {state}.")
+        );
     }
 }
