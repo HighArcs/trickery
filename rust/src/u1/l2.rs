@@ -31,7 +31,7 @@ pub fn activity_three(f: I) {
 }
 
 #[cfg(test)]
-mod tests {
+mod t {
     use super::*;
     use crate::tools::*;
     #[test]

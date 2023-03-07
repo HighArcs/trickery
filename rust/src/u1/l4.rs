@@ -1,8 +1,7 @@
 use crate::tools::I;
-
 pub fn activity_one(f: I) {
     f.println("Enter starting number (must be an integer)");
-    let mut i = f.next::<i32>();
+    let mut i = f.get_next::<i32>();
 
     i += 1;
     f.println(format!("number is now {i}"));
@@ -23,7 +22,7 @@ pub fn activity_one(f: I) {
 }
 
 pub fn activity_two(f: I) {
-    let i = f.next::<i32>();
+    let i = f.get_next::<i32>();
 
     f.println(i / 3);
 }
@@ -31,7 +30,7 @@ pub fn activity_two(f: I) {
 pub fn activity_three(f: I) {
     f.println("Enter a circumference:");
 
-    let circumference = f.next::<f64>();
+    let circumference = f.get_next::<f64>();
 
     let radius = circumference / 6.28;
     let area = radius * radius * 3.14;
@@ -40,8 +39,16 @@ pub fn activity_three(f: I) {
     f.println(format!("Area: {area}"));
 }
 
+pub fn activity_four(f: I) {
+    f.println("Enter a price:");
+
+    let d = f.get_next::<f64>();
+
+    f.println(format!("Change from $10: ${}", 10.0 - d));
+}
+
 #[cfg(test)]
-mod tests {
+mod t {
     use super::*;
     use crate::tools::*;
     #[test]
@@ -81,7 +88,7 @@ mod tests {
         assert_eq!(f.read_line(), format!("number is now {}", n + 3));
         assert_eq!(f.read_line(), format!("number is now {}", n + 2));
         assert_eq!(f.read_line(), format!("number is now {}", n + 1));
-        assert_eq!(f.read_line(), format!("number is now {}", n + 0));
+        assert_eq!(f.read_line(), format!("number is now {n}"));
     }
 
     #[test]
@@ -148,7 +155,52 @@ mod tests {
 
         f.read_line();
 
-        assert_eq!(f.read_line(), "Radius: 4.0");
+        assert_eq!(f.read_line(), "Radius: 4");
         assert_eq!(f.read_line(), "Area: 50.24");
+    }
+
+    #[test]
+    fn a3_variable() {
+        let mut f = Io::new();
+        let n = 5.54;
+        f.sendln(n);
+
+        activity_three(&mut f);
+
+        f.read_line();
+
+        assert_eq!(f.read_line(), format!("Radius: {}", n / 6.28));
+        assert_eq!(
+            f.read_line(),
+            format!("Area: {}", 3.14 * (n / 6.28) * (n / 6.28))
+        );
+    }
+
+    #[test]
+    fn a4_sample() {
+        let mut f = Io::new();
+
+        f.sendln(3.50);
+
+        activity_four(&mut f);
+
+        f.read_line();
+
+        assert_eq!(f.read_line(), "Change from $10: $6.5");
+    }
+
+    #[test]
+    fn a4_variable() {
+        let mut f = Io::new();
+
+        let n = 2.0;
+
+        f.sendln(2.0);
+
+        activity_four(&mut f);
+
+        f.read_line();
+
+        assert_eq!(f.read_line(), format!("Change from $10: ${}", 10.0 - n));
     }
 }

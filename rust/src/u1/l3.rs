@@ -3,9 +3,9 @@ use crate::tools::I;
 pub fn activity_one(f: I) {
     f.println("Print 3 doubles:");
 
-    let a = f.next::<f64>();
-    let b = f.next::<f64>();
-    let c = f.next::<f64>();
+    let a = f.get_next::<f64>();
+    let b = f.get_next::<f64>();
+    let c = f.get_next::<f64>();
 
     f.println(format!("{c} {b} {a}"));
 }
@@ -17,17 +17,17 @@ pub fn activity_two(f: I) {
 
     f.println(format!("Hi {name}. How old are you?"));
 
-    let years = f.next::<usize>();
+    let years = f.get_next::<usize>();
 
     f.println(format!("{name} is {years} years old."));
 }
 
 pub fn activity_three(f: I) {
     f.println("Java is an object-oriented programming language, true or false?");
-    let u = f.next::<bool>();
+    let u = f.get_next::<bool>();
 
     f.println("Java is an object-oriented programming language, true or false?");
-    let p = f.next::<bool>();
+    let p = f.get_next::<bool>();
 
     f.println(format!(
         "Question 1 - Your answer: {u}. Correct answer: true"
@@ -38,7 +38,7 @@ pub fn activity_three(f: I) {
 }
 
 #[cfg(test)]
-mod tests {
+mod t {
     use super::*;
     use crate::tools::*;
     #[test]
