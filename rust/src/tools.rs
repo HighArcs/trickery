@@ -74,11 +74,11 @@ impl Io {
             c = self.next_char();
         }
 
-        return v;
+        v
     }
 
     /// Convert the next line from stdin into `T`.
-    pub fn next<T>(&mut self) -> T
+    pub fn get_next<T>(&mut self) -> T
     where
         T: FromStr,
         T::Err: Debug,
@@ -86,12 +86,12 @@ impl Io {
         self.next_line().parse::<T>().unwrap()
     }
 
-    /// Get the next input from stdin.
+    /// Get the next input from stdout.
     pub fn read_char(&mut self) -> Option<char> {
         self.o.pop_front().map(|x| x as char)
     }
 
-    /// Get the next line from stdin.
+    /// Get the next line from stdout.
     pub fn read_line(&mut self) -> String {
         let mut v = String::new();
 
@@ -102,15 +102,21 @@ impl Io {
             c = self.read_char();
         }
 
-        return v;
+        v
     }
 
-    /// Convert the next line from stdin into `T`.
+    /// Convert the next line from stdout into `T`.
     pub fn read<T>(&mut self) -> T
     where
         T: FromStr,
         T::Err: Debug,
     {
         self.read_line().parse::<T>().unwrap()
+    }
+}
+
+impl Default for Io {
+    fn default() -> Self {
+        Self::new()
     }
 }
