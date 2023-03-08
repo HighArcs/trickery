@@ -1,4 +1,4 @@
-package Assignment9;
+// package Assignment9;
 
 public class Captain extends UltimatePlayer {
     public final boolean type;
@@ -8,11 +8,11 @@ public class Captain extends UltimatePlayer {
         this.type = type;
     }
 
-    public int throwDisc(final int pow) {
+    public final int throwDisc(final int pow) {
         return (super.throwDisc(pow) / 4) * 5;
     }
 
-    public String toString() {
+    public final String toString() {
         String text = "defense";
         if (this.type) {
             text = "offense";
