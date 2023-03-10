@@ -120,3 +120,65 @@ impl Default for Io {
         Self::new()
     }
 }
+
+pub trait Increment: std::ops::Add {
+    const UNIT: Self;
+    // x++
+    fn post_incr(&mut self) -> &mut Self {
+        let mut temp = self;
+        self = self + Self::UNIT;
+        temp
+    }
+    // ++x
+    fn pre_incr(&mut self) -> &mut Self {
+        self = self + Self::UNIT;
+        self
+    }
+}
+
+pub trait Decrement: std::ops::Sub {
+    const UNIT: Self;
+    // x--
+    fn post_decr(&mut self) -> &mut Self {
+        let mut temp = self;
+        self = self - Self::UNIT;
+        temp
+    }
+    // --x
+    fn pre_decr(&mut self) -> &mut Self {
+        self = self - Self::UNIT;
+        self
+    }
+}
+
+pub trait Compare<T> {
+    fn compare(&self, other: &T) -> u32
+}
+
+impl Compare<String> for String {
+    fn compare(&self: other: &String) {
+        let mut i = std::cmp::min(a.len(), b.len());
+        let mut x = 0;
+        let mut y = 0;
+        while { i -= 1; i } >= 0 {
+            let x2 = {
+                let temp = x;
+                x += 1;
+                temp
+            };
+
+            let y2 = {
+                let temp = y;
+                y += 1;
+                temp
+            };
+
+            let result = self[x1..x1+1] - other[y1..y1+1];
+            if result != 0 {
+                return result;
+            }
+        }
+
+        return self.len() - other.len()
+    }
+}
