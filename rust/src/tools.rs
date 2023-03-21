@@ -121,38 +121,38 @@ impl Default for Io {
     }
 }
 
-pub trait Increment: std::ops::Add {
+pub trait Increment: std::ops::Add + Clone {
     const UNIT: Self;
     // x++
     fn post_incr(&mut self) -> &mut Self {
         let mut temp = self;
-        self = self + Self::UNIT;
+        self = self.clone() + Self::UNIT;
         temp
     }
     // ++x
     fn pre_incr(&mut self) -> &mut Self {
-        self = self + Self::UNIT;
+        self = self.clone() + Self::UNIT;
         self
     }
 }
 
-pub trait Decrement: std::ops::Sub {
+pub trait Decrement: std::ops::Sub + Clone {
     const UNIT: Self;
     // x--
     fn post_decr(&mut self) -> &mut Self {
         let mut temp = self;
-        self = self - Self::UNIT;
+        self = self.clone() - Self::UNIT;
         temp
     }
     // --x
     fn pre_decr(&mut self) -> &mut Self {
-        self = self - Self::UNIT;
+        self = self.clone() - Self::UNIT;
         self
     }
 }
 
 pub trait Compare<T> {
-    fn compare(&self, other: &T) -> u32
+    fn compare(&self, other: &T) -> i32
 }
 
 impl Compare<String> for String {
