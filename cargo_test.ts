@@ -1,7 +1,3 @@
-import { ChildProcess } from "child_process";
-import { Writable } from "stream";
-import { threadId, Worker } from "worker_threads";
-
 export type Tests = {
     [test: string]: (() => unknown) | Tests;
 }
@@ -12,7 +8,6 @@ export type Format = 'human' | 'short' | 'json';
 export interface Options {
     tests?: Array<string>,
     quiet?: boolean,
-    tests_per_thread?: number,
     verbose?: boolean,
     color?: Color,
     format?: Format
@@ -20,8 +15,11 @@ export interface Options {
 
 export interface Diagnostic {
     success: boolean,
-    message: string,
-    errors: Array<string>
+    error: unknown
+}
+
+class Stdout {
+    public constructor(private buffer: string) {}
 }
 
 function deep_clone<T>(value: T): T {
@@ -41,15 +39,8 @@ function deep_clone<T>(value: T): T {
     return result;
 }
 
-export function cargo_test(tests: Tests, options: Options = {color:'always',format:'human',quiet:false,verbose:false,tests_per_thread:1}) {
-    const old_console = deep_clone(console);
-    // adapt
-    console = new console.Console(new Writable(), new Writable());
-
+export function cargo_test(tests: Tests, options: Options = {color:'always',format:'human',quiet:false,verbose:false}) {
     const diagnostics: Array<Diagnostic> = [];
-
-    const existing_thread = new ChildProcess({captureRejections:true}).on('message', (test) => {})
-    let test_count = 0;
 
     function run_tests(tests: Tests) {
         for (const key in tests) {
@@ -59,14 +50,12 @@ export function cargo_test(tests: Tests, options: Options = {color:'always',form
                 return run_tests(value);
             }
     
-            if ()
-            existing_thread.emit('message')
+            try { } catch (e) {
+                diagnostics.push({error:e})
+            }       
         }
     
         return diagnostics;
     }
-    
-
-    console = old_console;
 }
 
