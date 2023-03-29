@@ -5,22 +5,7 @@ public class tests {
   private static int incr = 0;
 
   public static void main(String[] args) {
-    int[] elements = { 3, 4, 6, 2, 7, 7 };
-    for (int j = 0; j < elements.length - 1; j++) {
-      int minIndex = j;
-      for (int k = j + 1; k < elements.length; k++) {
-        incr++;
-        if (elements[k] < elements[minIndex]) { // comparison performed
-          minIndex = k;
-        }
-      }
-
-      int temp = elements[j];
-      elements[j] = elements[minIndex];
-      elements[minIndex] = temp;
-    }
-
-    System.out.println(incr);
+    System.out.println(repeatHelper(3));
   }
 
   public static <T> void str(T[][] a) {
@@ -30,6 +15,30 @@ public class tests {
       }
 
       System.out.println();
+    }
+  }
+
+  private static int[] nums = { 0, 3, 1, 1, 1, 6, 6 };
+
+  public int findRepeatIndex() {
+    return repeatHelper(nums.length - 1);
+  }
+
+  private static int repeatHelper(int prev) {
+    if (prev >= nums.length - 1) {
+      return -1;
+    } else if (nums[prev] == nums[prev + 1]) {
+      return prev;
+    } else {
+      return repeatHelper(prev + 1);
+    }
+  }
+
+  public static int recur(int x) {
+    if (x > 15) {
+      return x / 2;
+    } else {
+      return recur(recur(x * 3));
     }
   }
 
