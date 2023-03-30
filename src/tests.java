@@ -1,11 +1,34 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class tests {
 
   private static int incr = 0;
 
   public static void main(String[] args) {
-    System.out.println(repeatHelper(3));
+    int[] a = {};
+    System.out.println(a[0]);
+  }
+
+  private static final ArrayList<Integer> vals = new ArrayList<>();
+
+  public static void binaryInsert(int num) {
+    int low = 0;
+    int high = vals.size();
+
+    while (high > low) {
+      int mid = (low + high) / 2;
+      System.out.println("mid: " + mid + ", low: " + low + ", high: " + high);
+      if (vals.get(mid).intValue() < num) {
+        low = mid + 1;
+      } else {
+        high = mid;
+      }
+
+    }
+
+    vals.add(low, new Integer(num));
   }
 
   public static <T> void str(T[][] a) {
